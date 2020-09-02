@@ -19,7 +19,6 @@ export const keepLogin = (tokennya) => {
         }
         Axios.post(urlApi + 'user/keeplogin', null, options)
         .then(res => {
-            console.log(res.data)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data

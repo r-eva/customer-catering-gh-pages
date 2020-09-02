@@ -85,9 +85,9 @@ class Login extends Component {
                     </div>
                     <div className="text-center">
                         {this.renderButtonLogin()}
-                        <h6 style={{fontSize: '13px'}} className='text-center'>Or login in with</h6>
+                        {/* <h6 style={{fontSize: '13px'}} className='text-center'>Or login in with</h6>
                         <Facebook/>
-                        <img className="mb-3" src={Maillogo} alt="iconMail" width="35px"/>
+                        <img className="mb-3" src={Maillogo} alt="iconMail" width="35px"/> */}
                     </div>
                 </Card.Body>
             </Card>

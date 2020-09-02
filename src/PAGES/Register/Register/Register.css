@@ -1,0 +1,11 @@
+.card-register {
+    width: 27rem;
+    height: 25em;
+}
+
+.background-register {
+    background: url('../../../IMG/Register/backgroundregister.jpeg');
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+}

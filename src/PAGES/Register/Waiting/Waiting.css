@@ -1,0 +1,23 @@
+.background-waiting {
+    background: url('../../../IMG/Register/backgroundwaiting.jpeg');
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    h5 {
+        font-size: 13px;
+    }
+
+    .mobile-text {
+        align-items: start!important;
+    }
+}
+

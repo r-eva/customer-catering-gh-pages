@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap');
+
+.all-nav {
+    font-weight: bolder;
+    margin: 0px 20px
+}
+
+.link-nav {
+    margin: 0px 10px;
+    font-family: 'Baloo Thambi 2', cursive;
+    background: white
+}
+
+.link-nav:hover {
+    background: #b0b4b2;
+    color: white!important;
+}
+
+.link-logo {
+    margin: 10px;
+    padding-left: 20px;
+}
+
+.toggle-nav {
+    background: white;
+    border: 2px solid black;
+    margin-right:20px;
+}
+
+.dropdown-nav {
+    margin: 0px 10px;
+    font-family: 'Baloo Thambi 2', cursive;
+    background: white;
+    border: none;
+}
+
+.dropdown-nav:hover {
+    background: #b0b4b2;
+    color: white;
+}
+
+.transition-scroll {
+    transition: all 1s ease!important;
+}
+
+@media only screen and (max-width: 768px){
+    .all-nav {
+        margin-right: 15px;
+    }
+
+    .img-fluid {
+        width: 140px
+    }
+
+    .link-nav {
+        border:none;
+        padding-left: 20px!important;
+    }
+
+    .link-nav:hover {
+        border:none;
+    }
+
+    .dropdown-nav {
+        border:none;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+
+    .dropdown-nav:hover {
+        border:none;
+    }
+
+}
+
+@media only screen and (min-width: 769px){
+    .img-fluid {
+        width: 150px
+    }
+}

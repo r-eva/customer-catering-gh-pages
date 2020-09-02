@@ -1,0 +1,28 @@
+.zoom-image-health {
+    overflow: hidden
+}
+
+.zoom-image-health img {
+    transition: all 0.5s ease
+}
+
+.zoom-image-health:hover img {
+    transform: scale(1.2);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .card-box-health {
+        display: flex;
+        flex-wrap: nowrap!important;
+        overflow-x: scroll!important;
+        overflow-y: hidden!important;
+    }
+    .card-mobile-health {
+        flex: 0 0 auto;
+    }
+    h1 {
+        font-size: 40px!important;
+    }
+}
+

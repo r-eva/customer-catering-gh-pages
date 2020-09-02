@@ -1,0 +1,107 @@
+.zoom-image-mainmenu{
+    overflow: hidden;
+}
+
+.zoom-image-mainmenu img {
+    transition: all 0.5s ease
+}
+
+.zoom-image-mainmenu:hover img {
+    transform: scale(1.2);
+}
+
+.card-image-mainmenu {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.discount-mainmenu{
+    background-color: red;
+    width: 20%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.nama-paket-mainmenu {
+    font-weight: bold;
+}
+
+.discounted-price-mainmenu {
+    color: grey;
+    text-decoration: line-through
+
+}
+
+.discount-price-mainmenu {
+    color:red;
+}
+
+.card-box-mainmenu {
+    display: flex;
+    flex-wrap: nowrap!important;
+    overflow-x: scroll!important;
+    overflow-y: hidden!important;
+}
+
+.scrolled-card-mainmenu {
+    flex: 0 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-image-mainmenu {
+        height: 200px!important;
+    }
+
+    .font-price-mainmenu {
+        font-size: 13px;
+    }
+
+    .nama-paket-mainmenu {
+        font-size: 13px!important;
+    }
+
+    .discount-price-mainmenu {
+        font-size: 13px!important;
+    }
+
+    .discounted-price-mainmenu {
+        font-size: 13px!important;
+    }
+
+}
+
+::-webkit-scrollbar{
+    color: inherit;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: #4cd3c2;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement
+{
+  border-width: 7px 14px 7px 0;
+  border-color: transparent #404040 transparent transparent;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:hover
+{
+  border-color: transparent #505050 transparent transparent;
+}
+
+::-webkit-scrollbar-button:horizontal:increment
+{
+  border-width: 7px 0 7px 14px;
+  border-color: transparent transparent transparent #404040;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:hover
+{
+  border-color: transparent transparent transparent #505050;
+}

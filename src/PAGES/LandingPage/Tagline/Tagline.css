@@ -1,0 +1,13 @@
+.bg-tagline {
+    position: relative;
+    background: url('../../../IMG/Landingpage/Tagline/bgLanding.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: center;
+}
+
+.tagline {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.3);
+    font-family: 'Brush Script MT'
+}

@@ -1,0 +1,40 @@
+.bg-tagline-wishlist {
+    position: relative;
+    background: url('../../IMG/Wishlist/bgwishlist.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-wishlist-tag {
+    background-color: rgba(12, 189, 36, 0.801);
+}
+
+.tagline-wishlist {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.quotes-wishlist {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+}
+
+.link-product-wishlist{
+    text-decoration: none!important;
+    color: black;
+}
+
+.img-wishlist {
+    width:190px;
+    height: 150px;
+    border-radius: 4px
+}
+
+@media only screen and (max-width: 767){
+    .img-wishlist {
+        width:130px!important;
+        height: 100px!important
+    }
+}

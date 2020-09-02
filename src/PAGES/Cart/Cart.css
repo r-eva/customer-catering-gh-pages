@@ -1,0 +1,22 @@
+.bg-tagline-cart {
+    position: relative;
+    background: url('../../IMG/Cart/bgcart.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-cart-tag {
+    background-color: rgba(12, 189, 36, 0.801);
+}
+
+.tagline-cart {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.quotes-cart {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+}

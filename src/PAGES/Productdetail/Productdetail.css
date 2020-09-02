@@ -1,0 +1,163 @@
+.bg-tagline-productdetail {
+    position: relative;
+    background: url('../../IMG/Productdetail/bgtagline.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-productdetail-tag {
+    background-color: rgba(12, 189, 36, 0.801);
+}
+
+.tagline-productdetail {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.quotes {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+}
+
+.zoom-image{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.zoom-image img {
+    transition: all 0.5s ease
+}
+
+.zoom-image:hover img {
+    transform: scale(1.2);
+}
+
+.package-name {
+    color:#4c4c4c
+}
+
+.heart-wishlist {
+    color:red;
+    cursor:pointer
+}
+
+.heart-wishlist-notlogin {
+    text-decoration: none
+}
+
+.normal-price {
+    background-color:green;
+    width:100px;
+    height:22px;
+    color:white;
+    text-align:center;
+    display: inline-block
+}
+
+.discount-price {
+    background-color:green;
+    width:50px;
+    height:22px;
+    color:white;
+    text-align:center;
+    display: inline-block
+}
+
+.price-tag-discount {
+    font-size:20px; 
+    font-weight:600;
+    color:#606060;
+    margin-left:10px;
+    text-decoration: line-through
+}
+
+.final-price {
+    font-size:24px;
+    font-weight:bold;
+    color:#FF5722;
+    margin-top:10px
+}
+
+.product-description {
+    color:#606060;
+    font-style: italic
+}
+
+.amount-box {
+    margin-top:8px;
+    font-size:16px;
+    font-weight:bold;
+    color:#606060
+}
+
+.delivery {
+    font-size: 15px;
+    color: grey
+}
+
+.add-to-cart {
+    text-decoration: none;
+}
+
+.schedule {
+    text-decoration: underline
+}
+
+.font-counting {
+    font-size: medium;
+}
+
+@media only screen and (max-width: 767px) {
+    .card-mobile {
+        padding-left: 5px!important;
+        padding-right: 5px!important;
+    }
+
+    .package-name-mobile {
+        font-size: x-large!important;
+    }
+
+    .normal-price {
+        width:85px!important;
+        height:18px!important;
+    }
+
+    .discount-price {
+        width:40px!important;
+        height:18px!important;
+    }
+
+    .normal-price-font {
+        font-size: small!important;
+    }
+
+    .price-tag-discount {
+        font-size: small!important;
+    }
+
+    .final-price {
+        font-size:medium!important;
+        margin-top:5px!important
+    }
+
+    .product-description {
+        font-size: medium!important;
+    }
+
+    .amount-box {
+        margin-top:0px!important;
+        font-size:small;
+        font-weight:bold;
+        color:#606060
+    }
+
+    .font-bill {
+        font-size: large!important;
+    }
+    .font-counting {
+        font-size: medium!important;
+    }
+}

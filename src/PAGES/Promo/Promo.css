@@ -1,0 +1,94 @@
+.bg-tagline-promo {
+    position: relative;
+    background: url('../../IMG/Promo//bgpromo.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-promo-tag {
+    background-color: rgba(12, 189, 36, 0.801);
+}
+
+.tagline-promo {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.quotes-promo {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+}
+
+.zoom-image-promo {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.zoom-image-promo img {
+    transition: all 0.5s ease
+}
+
+.zoom-image-promo:hover img {
+    transform: scale(1.2);
+}
+
+.img-product-promo {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding: 6px
+}
+
+.discount-product-promo {
+    background-color: red;
+    width: 20%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.font-price-promo {
+    color:grey;
+    font-size: 15px;
+    padding-left: 10px
+}
+
+.font-price-discount-promo {
+    color: grey;
+    font-size: 15px;
+    text-decoration: line-through;
+    
+}
+
+.font-price-discounted-promo {
+    color: red;
+    font-size: 15px;
+    text-align: right;
+}
+
+.card-height-promo {
+    height: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .zoom-image-promo {
+        height: 90!important;
+    }
+
+    .card-mobile-promo {
+        padding-left: 5px!important;
+        padding-right: 5px!important;
+    }
+
+    .discount-product-promo {
+        font-size: 13px;
+    }
+}

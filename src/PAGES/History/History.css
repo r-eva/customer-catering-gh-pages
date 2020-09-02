@@ -1,0 +1,22 @@
+.bg-tagline-history {
+    position: relative;
+    background: url('../../IMG/History/bghistori.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-history-tag {
+    background-color: rgba(12, 189, 36, 0.801);
+}
+
+.tagline-history {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.quotes-history {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+}

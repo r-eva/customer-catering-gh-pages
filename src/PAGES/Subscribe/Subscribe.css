@@ -1,0 +1,100 @@
+.bg-tagline-subscribe {
+    position: relative;
+    background: url('../../IMG/Subscribe/bgSubscribe.jpeg');
+    background-size:cover;
+    min-height: 100vh;
+    background-position: cover;
+}
+
+.bg-subscribe-tag {
+    background-color: rgba(255, 152, 0, 0.7);
+}
+
+.tagline-sentence {
+    font-weight: bolder;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: 'Brush Script MT'
+}
+
+.parent-button {
+    height: 90px;
+    border-color:#666699;
+    background: none;
+    color: #666699;
+    border-width: medium;
+    font-weight: bold;
+}
+
+.parent-button:hover {
+    background: lightgray;
+    border-color: lightgray;
+}
+
+.img-button {
+    width: 50px;
+}
+
+.zoom-image-subscribe {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.zoom-image-subscribe img {
+    transition: all 0.5s ease
+}
+
+.zoom-image-subscribe:hover img {
+    transform: scale(1.2);
+}
+
+.img-product {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding: 6px
+}
+
+.discount-product{
+    background-color: red;
+    width: 20%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.font-price {
+    color:grey;
+    font-size: 15px;
+    padding-left: 10px
+}
+
+.font-price-discount {
+    color: grey;
+    font-size: 15px;
+    text-decoration: line-through;
+    
+}
+
+.font-price-discounted {
+    color: red;
+    font-size: 15px;
+    text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .zoom-image-subscribe {
+        height: 90!important;
+    }
+
+    .card-mobile-subscribe {
+        padding-left: 5px!important;
+        padding-right: 5px!important;
+    }
+}
+

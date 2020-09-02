@@ -30,7 +30,6 @@ class Cart extends Component {
         Axios.get(urlApi + `cart/getCartUser/` + userId)
         .then((res)=>{
             this.setState({cart: res.data})
-            console.log(this.state.cart)
         })
         .catch((err) => {
             console.log(err)

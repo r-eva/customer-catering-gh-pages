@@ -199,11 +199,7 @@ class Productdetail extends Component {
         if (this.state.addToChartButton) {
             return <input type="button" onClick={this.onTambahKeranjangBtnClick} className='btn btn-success btn-block mb-4 mb-md-0' value="ADD TO CART"/>
         } else {
-            return(
-                <Button variant="success" className='btn btn-block mb-4 mb-md-0 p-2'>
-                    <Spinner animation="border" variant="secondary" />
-                </Button>
-            ) 
+            return <Spinner animation="border" variant="secondary"/>
         }
     }
 
@@ -364,7 +360,7 @@ class Productdetail extends Component {
                                 </div>
                             </div>
                             <div className='row align-items-end'>
-                                <div className="col-9">
+                                <div className="col-9 text-center">
                                     {
                                         this.props.user.id !== 0
                                         ?

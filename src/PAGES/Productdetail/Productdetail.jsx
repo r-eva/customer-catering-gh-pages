@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import {hitungCart} from '../../REDUX/Action'
 import moment from 'moment'
 import swal from 'sweetalert'
-import {Image, ButtonGroup} from 'react-bootstrap'
+import {Image, ButtonGroup, Button, Spinner} from 'react-bootstrap'
 import {IoMdHeart, IoMdHeartEmpty} from 'react-icons/io'
 import {TiPlus, TiMinus} from 'react-icons/ti'
 
@@ -21,7 +21,8 @@ class Productdetail extends Component {
         jumlahBox: 1,
         tanggalHariIni: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
         inputTanggalMulai: '',
-        inputDurasi: 0
+        inputDurasi: 0,
+        addToChartButton: true
     }
 
     componentDidMount = () => {
@@ -145,6 +146,7 @@ class Productdetail extends Component {
         }
         else {
             if (moment(this.state.inputTanggalMulai).format('L') >= moment().format('L')) {
+                this.setState({addToChartButton: false})
                 var ubahDurasi
                 if (this.refs.inputDurasi.value.length === 7) {
                     ubahDurasi = Number(this.refs.inputDurasi.value.slice(0,2))
@@ -172,7 +174,7 @@ class Productdetail extends Component {
 
                  Axios.post(urlApi + 'cart/addToCart', objKeranjang)
                  .then(res => {
-                     this.setState({inputTanggalMulai: ''})
+                     this.setState({inputTanggalMulai: '', addToChartButton: true})
                      this.props.hitungCart(this.props.user.id)
                      swal({icon: "success", text: "Your order has been added to cart."})
                  }).catch(err => {
@@ -190,6 +192,18 @@ class Productdetail extends Component {
            this.setState({inputDurasi: 0})
         } else {
             this.setState({inputDurasi: Number(this.refs.inputDurasi.value.slice(0,2))})
+        }
+    }
+
+    renderButtonAddToChart = () => {
+        if (this.state.addToChartButton) {
+            return <input type="button" onClick={this.onTambahKeranjangBtnClick} className='btn btn-success btn-block mb-4 mb-md-0' value="ADD TO CART"/>
+        } else {
+            return(
+                <Button variant="success" className='btn btn-block mb-4 mb-md-0 p-2'>
+                    <Spinner animation="border" variant="secondary" />
+                </Button>
+            ) 
         }
     }
 
@@ -368,7 +382,9 @@ class Productdetail extends Component {
                                                 }
                                                 </>
                                                 :
-                                                <input type="button" onClick={this.onTambahKeranjangBtnClick} className='btn btn-success btn-block mb-4 mb-md-0' value="ADD TO CART"/>
+                                                <>
+                                                    {this.renderButtonAddToChart()}
+                                                </>
                                             }
                                         </>
                                         :

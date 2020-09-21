@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import {urlApi} from '../../../HELPERS/database'
-import { Card } from 'react-bootstrap'
+import { Card, Spinner } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import './Mainmenu.css'
 
@@ -10,7 +10,9 @@ class MealboxAndSweet extends Component {
     state = {
         dataLangganan: [],
         dataMealBox: [],
-        randomMealBox: []
+        randomMealBox: [],
+        getDataLangganan: false,
+        getDataMealbox: false
     }
 
     componentDidMount () {
@@ -21,7 +23,7 @@ class MealboxAndSweet extends Component {
     getDataLangganan = () => {
         Axios.get(urlApi + 'langganan/getKategoriLangganan')
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLangganan: true})
         })
         .catch(err => {
             console.log(err)
@@ -33,7 +35,7 @@ class MealboxAndSweet extends Component {
         .then(res => {
             var n = 5
             var randomItems = res.data.sort(() => .5 - Math.random()).slice(0, n);
-            this.setState({dataMealBox: res.data, randomMealBox: randomItems})
+            this.setState({dataMealBox: res.data, randomMealBox: randomItems, getDataMealbox: true})
         })
         .catch(err => {
             console.log(err)
@@ -111,14 +113,18 @@ class MealboxAndSweet extends Component {
     }
 
     renderMenuMealBox = () => {
-        var jsx = this.state.dataMealBox.map(val => {
-            return (
-                <div key={val.id}>
-                    <Card.Text className="text-left">{val.namaPaket}</Card.Text>
-                </div>
-            )
-        })
-        return jsx
+        if (this.state.getDataLangganan === false) {
+            return <Spinner animation="border" variant="secondary"/>
+        } else {
+            var jsx = this.state.dataMealBox.map(val => {
+                return (
+                    <div key={val.id}>
+                        <Card.Text className="text-left">{val.namaPaket}</Card.Text>
+                    </div>
+                )
+            })
+            return jsx
+        }
     }
 
     render() {
@@ -134,7 +140,9 @@ class MealboxAndSweet extends Component {
                             ?
                             <>{this.renderBox()}</>
                             :
-                            null
+                            <center>
+                                <Spinner animation="border" variant="secondary"/>
+                            </center>
                         }
                     </div>
                 </div>

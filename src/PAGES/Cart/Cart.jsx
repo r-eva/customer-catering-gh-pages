@@ -6,14 +6,15 @@ import {urlApi} from '../../HELPERS/database'
 import swal from 'sweetalert'
 import moment from 'moment'
 import {hitungCart} from '../../REDUX/Action'
-import {Table} from 'react-bootstrap'
+import {Table, Button} from 'react-bootstrap'
 import './Cart.css' 
 import ModalCheckout from './ModalCheckout'
 
 class Cart extends Component {
 
     state = {
-        cart: []
+        cart: [],
+        deleteButtonClicked: false
     }
 
     componentDidMount() {
@@ -109,11 +110,13 @@ class Cart extends Component {
     }
 
     deleteCart = (index) => {
+        this.setState({deleteButtonClicked: true})
         Axios.delete(urlApi + 'cart/deleteCartById/' + index) 
         .then((res)=> {
             this.props.hitungCart(this.props.user.id)
             this.getDataApi(this.props.user.id)
             swal ('Delete item', 'Item deleted from cart', 'success')
+            this.setState({deleteButtonClicked: false})
         })
         
         .catch((err) => {
@@ -161,7 +164,19 @@ class Cart extends Component {
                         </select>
                     </td>
                     <td>{val.Durasi * val.JumlahBox * (val.harga - (val.harga * (val.discount/100))) }</td>
-                    <td><input type="button" className="btn btn-danger btn-block" value="DELETE" onClick={()=> this.deleteCart(val.id)}/></td>
+                    <td>
+                        {   this.state.deleteButtonClicked === false
+                            ?
+                            <Button type="button" className="btn btn-danger btn-block" onClick={()=> this.deleteCart(val.id)}>
+                                DELETE
+                            </Button>
+                            :
+                            <Button type="button" className="btn btn-danger btn-block">
+                                DELETE
+                            </Button>
+                        }
+                        
+                    </td>
                 </tr>
             )
         })

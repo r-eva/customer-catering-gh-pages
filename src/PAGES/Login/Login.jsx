@@ -7,8 +7,8 @@ import {Card, Form, InputGroup, FormControl} from "react-bootstrap"
 import {IconContext} from "react-icons";
 import {AiTwotoneMail} from 'react-icons/ai'
 import {FaLock} from 'react-icons/fa'
-import Maillogo from '../../IMG/Login/maillogo.png'
-import Facebook from './Facebook'
+// import Maillogo from '../../IMG/Login/maillogo.png'
+// import Facebook from './Facebook'
 
 class Login extends Component {
 

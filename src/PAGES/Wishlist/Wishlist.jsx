@@ -13,7 +13,8 @@ class Wishlist extends Component {
     state = {
         data: [],
         showDetails: false,
-        detailIdx: null
+        detailIdx: null,
+        buttonDeleteClicked: false
     }
 
     componentDidMount () {
@@ -31,10 +32,12 @@ class Wishlist extends Component {
     }
 
     deleteWishList = (id) => {
+        this.setState({buttonDeleteClicked: true})
         Axios.delete(urlApi + 'wishlist/deleteWishlistById/' + id)
         .then(res => {
             this.getDataWishlist()
             swal({icon: "success", text: "Product deleted from wishlist."})
+            this.setState({buttonDeleteClicked: false})
         }) 
         .catch(err => console.log(err))
     }
@@ -50,7 +53,13 @@ class Wishlist extends Component {
                     </td>
                     <td>{val.harga}</td>
                     <td>{val.discount}</td>
-                    <td><button type="button" className="btn btn-danger" onClick={() => this.deleteWishList(val.id)}>Delete</button></td>
+                    {
+                        this.state.buttonDeleteClicked
+                        ?
+                        <td><button type="button" className="btn btn-danger">Delete</button></td>
+                        :
+                        <td><button type="button" className="btn btn-danger" onClick={() => this.deleteWishList(val.id)}>Delete</button></td>
+                    }
                 </tr>
             )
         })

@@ -5,7 +5,7 @@ import Axios from 'axios'
 import {urlApi} from '../../HELPERS/database'
 import swal from 'sweetalert'
 import './History.css'
-import {Table, Modal, Button} from 'react-bootstrap'
+import {Table, Modal, Button, Spinner} from 'react-bootstrap'
 
 class History extends Component {
     state = {
@@ -16,7 +16,9 @@ class History extends Component {
         buktiPembayaran: null,
         uploadBuktiBayarSuccess: false,
         modalShow: false,
-        historyMode: false
+        historyMode: false,
+        cancelButtonClicked: false,
+        uploadBuktiBayarClicked: false
     }
 
     componentDidMount() {
@@ -75,9 +77,11 @@ class History extends Component {
     }
 
     onBtnDeleteHistoryClick = (idHistory) => {
+        this.setState({cancelButtonClicked: true})
         Axios.put(urlApi + 'history/cancelHistoryById/' + idHistory)
         .then(res => {
             this.getDataApi(this.props.userId)
+            this.setState({cancelButtonClicked: false})
         }).catch(err=> {
             swal ('Eror', 'Server Error', 'error')
             console.log(err)
@@ -110,7 +114,13 @@ class History extends Component {
                                 </>
                                 :
                                 <>
-                                    <td><input type="button" className="btn btn-danger btn-block" value="CANCEL" onClick={()=> this.onBtnDeleteHistoryClick(val.id)}/></td>
+                                    {
+                                        this.state.cancelButtonClicked
+                                        ?
+                                        <td><input type="button" className="btn btn-danger btn-block" value="CANCEL"/></td>
+                                        :
+                                        <td><input type="button" className="btn btn-danger btn-block" value="CANCEL" onClick={()=> this.onBtnDeleteHistoryClick(val.id)}/></td>
+                                    }
                                     <td><input type="button" className="btn btn-success btn-block" value="Upload Payment Receipt" onClick={() => this.setState({keluarBoxPembayaran: 1, belanjaDiproses: val})}/></td>
                                 </>
                                 
@@ -119,7 +129,7 @@ class History extends Component {
                         :
                         <>
                             <td><button type="button" className="btn btn-dark btn-block" disabled>CANCEL</button></td>
-                            <td><input type="button" className="btn btn-dark btn-block" value="Upload Bukti Bayar" disabled/></td> 
+                            <td><input type="button" className="btn btn-dark btn-block" value="Upload Payment Receipt" disabled/></td> 
                         </>
                         
                     }
@@ -139,7 +149,9 @@ class History extends Component {
     }
 
     uploadBuktiBayar = (id) => {
+        this.setState({uploadBuktiBayarClicked: true})
         if (this.state.buktiPembayaran === null) {
+            this.setState({uploadBuktiBayarClicked: false})
             swal ('Error', `Please import your payment receipt!`, 'error')
         } else { 
             var formdata = new FormData();
@@ -165,15 +177,18 @@ class History extends Component {
     }
 
     submitPembayaranSukses = (id) => { 
+        this.setState({uploadBuktiBayarClicked: true})
         Axios.put(urlApi + 'history/pembayaranSubmit/' + id)
         .then((res)=>{
             this.getDataApi(this.props.userId)
             this.setState({belanjaDiproses: null,
                 keluarBoxPembayaran: null,
                 buktiPembayaran: null,
-                uploadBuktiBayarSuccess: false})
+                uploadBuktiBayarSuccess: false,
+                uploadBuktiBayarClicked: false
             })
-            swal ('Thank you for shopping!', `Your order will be sent to your place shortly.`, 'success')
+            })
+            swal ('Thank you for shopping!', `Upon Admin confirmation, your order will be sent to your place shortly.`, 'success')
         .catch((err) => {
             console.log(err)
         })
@@ -283,8 +298,16 @@ class History extends Component {
                                             null
                                             :
                                             <div className="row justify-content-center">
-                                                <input type="button" value="Upload" className="btn btn-success mr-2" onClick={() => this.uploadBuktiBayar(this.state.belanjaDiproses.id)} />
-                                                <input type="button" value="Cancel" className="btn btn-danger" onClick={() => this.setState({keluarBoxPembayaran: null})}/>
+                                                {
+                                                    this.state.uploadBuktiBayarClicked
+                                                    ?
+                                                    <Spinner animation="border" variant="secondary" className = "text-center"/>
+                                                    :
+                                                    <>
+                                                        <input type="button" value="Upload" className="btn btn-success mr-2" onClick={() => this.uploadBuktiBayar(this.state.belanjaDiproses.id)}/>
+                                                        <input type="button" value="Cancel" className="btn btn-danger" onClick={() => this.setState({keluarBoxPembayaran: null})}/>
+                                                    </>
+                                                }
                                             </div>
                                         }
 

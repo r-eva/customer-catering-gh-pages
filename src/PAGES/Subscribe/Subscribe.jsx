@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Axios from 'axios'
 import {urlApi} from '../../HELPERS/database'
 import './Subscribe.css'
-import {Card, Button} from 'react-bootstrap'
+import {Card, Button, Spinner} from 'react-bootstrap'
 import Snack from '../../IMG/Subscribe/Button/snack.png'
 import Mealbox from '../../IMG/Subscribe/Button/mealbox.png'
 import Best from '../../IMG/Subscribe/Button/best.png'
@@ -17,7 +17,11 @@ class Subscribe extends Component {
         dataLangganan: [],
         page: 0,
         pageContent: 12,
-        kategoriKlick: ''
+        kategoriKlick: '',
+        getDataLangganan: false,
+        getDataLanggananByKategori: false,
+        getDataLanggananUnder20: false,
+        getDataLanggananTerbaik: false
     }
 
     componentDidMount () {
@@ -27,7 +31,7 @@ class Subscribe extends Component {
     getDataLangganan = () => {
         Axios.get(urlApi + 'langganan/getKategoriLangganan')
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLangganan: true})
         })
         .catch(err => {
             console.log(err)
@@ -38,7 +42,7 @@ class Subscribe extends Component {
         this.setState({page: 0, pageContent: 12})
         Axios.get(urlApi + 'langganan/getKategoriLanggananPerkategori/' + kategori)
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLanggananByKategori: true})
         })
         .catch(err => {
             console.log(err)
@@ -49,7 +53,7 @@ class Subscribe extends Component {
         this.setState({page: 0, pageContent: 12})
         Axios.get(urlApi + 'langganan/getKategoriLanggananUnder20')
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLanggananUnder20: true})
         })
         .catch(err => {
             console.log(err)
@@ -60,7 +64,7 @@ class Subscribe extends Component {
         this.setState({page: 0, pageContent: 12})
         Axios.get(urlApi + 'langganan/daftarProdukTerbaik')
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLanggananTerbaik: true})
         })
         .catch(err => {
             console.log(err)
@@ -68,7 +72,10 @@ class Subscribe extends Component {
     }
 
     renderKategoriLangganan = () => {
-        let showData = this.state.dataLangganan.slice(this.state.page * this.state.pageContent, this.state.page * this.state.pageContent + this.state.pageContent)
+        if (this.state.getDataLangganan === false ) {
+            return <Spinner animation="border" variant="secondary"/>
+        } else {
+            let showData = this.state.dataLangganan.slice(this.state.page * this.state.pageContent, this.state.page * this.state.pageContent + this.state.pageContent)
         var jsx = showData.map(val => {
             return (
                 <div className="col-6 col-md-3 my-1 my-md-3 card-mobile-subscribe align-item-strech" key={val.id}>
@@ -104,6 +111,7 @@ class Subscribe extends Component {
             )
         })
         return jsx
+        }
     }
 
     render() {

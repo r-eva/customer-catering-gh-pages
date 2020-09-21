@@ -5,7 +5,7 @@ import {urlApi} from '../../HELPERS/database'
 import {hitungCart} from '../../REDUX/Action'
 import swal from 'sweetalert'
 import moment from 'moment'
-import {Modal, Button} from 'react-bootstrap'
+import {Modal, Button, Spinner} from 'react-bootstrap'
 import './ModalCheckout.css'
 
 class ModalCheckout extends Component {
@@ -16,7 +16,8 @@ class ModalCheckout extends Component {
         alamatPenerima: '',
         kodePosPenerima: '',
         messageData: null,
-        dataLengkap: false
+        dataLengkap: false,
+        resetDanSubmitHistory: false
     }
 
     submitHistory = () => {
@@ -28,6 +29,7 @@ class ModalCheckout extends Component {
     }
 
     resetDanSubmitHistory = () => {
+        this.setState({resetDanSubmitHistory: true})
         var TanggalTransaksi = moment(new Date()).format("YYYY-MM-DD HH:mm:ss").toString()
         var BatasAkhirBayar = moment(new Date()).add(2, 'hours').format("YYYY-MM-DD HH:mm:ss").toString()
         var postingHistory = {
@@ -46,7 +48,7 @@ class ModalCheckout extends Component {
             this.props.hitungCart(this.props.user.id)
             swal ('Thank you for your order!', `Please submit your payment before ${postingHistory.BatasAkhirBayar}.`, 'success')  
                 return this.setState({modalShow: false, paymentMode: false,
-                                        namaPenerima: '', alamatPenerima: '', kodePosPenerima: '', messageData: null, dataLengkap: false})
+                                        namaPenerima: '', alamatPenerima: '', kodePosPenerima: '', messageData: null, dataLengkap: false, resetDanSubmitHistory: false  })
         })
         .catch((err) => {
             swal ('Eror', 'Server Error', 'error')
@@ -108,7 +110,15 @@ class ModalCheckout extends Component {
                 {
                     this.state.dataLengkap
                     ?
-                    <Button variant="success" onClick={this.resetDanSubmitHistory}>OK</Button>
+                    <>
+                        {
+                            this.state.resetDanSubmitHistory
+                            ?
+                            <Spinner animation="border" variant="secondary"/>
+                            :
+                            <Button variant="success" onClick={this.resetDanSubmitHistory}>OK</Button>
+                        }
+                    </>
                     :
                     <>
                         <Button variant="success" onClick={this.submitHistory}>SUBMIT</Button>

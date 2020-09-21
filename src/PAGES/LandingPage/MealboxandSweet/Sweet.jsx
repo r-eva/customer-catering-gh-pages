@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import {urlApi} from '../../../HELPERS/database'
-import { Card } from 'react-bootstrap'
+import { Card, Spinner } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import './Mainmenu.css'
 
@@ -9,7 +9,9 @@ class Sweet extends Component {
     state = {
         dataLangganan: [],
         dataSweetAndOthers: [],
-        randomSweet: []
+        randomSweet: [],
+        getDataLangganan: false,
+        getDataSweetAndOthers: false
     }
 
     componentDidMount () {
@@ -20,7 +22,7 @@ class Sweet extends Component {
     getDataLangganan = () => {
         Axios.get(urlApi + 'langganan/getKategoriLangganan')
         .then(res => {
-            this.setState({dataLangganan: res.data})
+            this.setState({dataLangganan: res.data, getDataLangganan: true})
         })
         .catch(err => {
             console.log(err)
@@ -37,7 +39,7 @@ class Sweet extends Component {
                 tempData.push(...res.data)
                 var n = 5
                 var randomItems = tempData.sort(() => .5 - Math.random()).slice(0, n);
-                this.setState({dataSweetAndOthers: tempData, randomSweet: randomItems})
+                this.setState({dataSweetAndOthers: tempData, randomSweet: randomItems, getDataSweetAndOthers: true})
             })
             .catch(err => {
                 console.log(err)
@@ -119,14 +121,18 @@ class Sweet extends Component {
     }
 
     renderMenuSweet = () => {
-        var jsx = this.state.dataSweetAndOthers.map(val => {
-            return (
-                <div key={val.id}>
-                    <Card.Text className="text-left">{val.namaPaket}</Card.Text>
-                </div>
-            )
-        })
-        return jsx
+        if (this.state.getDataLangganan === false) {
+            return <Spinner animation="border" variant="secondary"/>
+        } else {
+            var jsx = this.state.dataSweetAndOthers.map(val => {
+                return (
+                    <div key={val.id}>
+                        <Card.Text className="text-left">{val.namaPaket}</Card.Text>
+                    </div>
+                )
+            })
+            return jsx
+        }
     }
 
     render() {
@@ -142,7 +148,7 @@ class Sweet extends Component {
                             ?
                             <>{this.renderBox()}</>
                             :
-                            null
+                            <Spinner animation="border" variant="secondary"/>
                         }
                     </div>
                 </div>

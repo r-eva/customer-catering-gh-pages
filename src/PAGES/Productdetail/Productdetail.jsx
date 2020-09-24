@@ -288,14 +288,21 @@ class Productdetail extends Component {
                                     <div className="row">
                                         <div className="col-12">
                                             <ButtonGroup>
-                                                <button className="btn btn-outline-danger" onClick={() => this.setState({jumlahBox: this.state.jumlahBox + 1})}><TiPlus/></button>
                                                 {
                                                     this.state.jumlahBox === 1 
                                                     ?
                                                     <button className="btn btn-outline-secondary" disabled><TiMinus/></button>
                                                     :
                                                     <button className="btn btn-outline-danger" onClick={() => this.setState({jumlahBox: this.state.jumlahBox - 1})}><TiMinus/></button>
+                                                }
+                                                {
+                                                    this.state.jumlahBox === 50 
+                                                    ?
+                                                    <button className="btn btn-outline-secondary" disabled><TiPlus/></button>
+                                                    :
+                                                    <button className="btn btn-outline-danger" onClick={() => this.setState({jumlahBox: this.state.jumlahBox + 1})}><TiPlus/></button>
                                                 } 
+                                                
                                             </ButtonGroup>
                                         </div>
                                     </div>
@@ -325,7 +332,7 @@ class Productdetail extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-12 pr-2 pl-3">
-                                    <p className="delivery">We do not deliver food in Saturday and Sunday.</p>
+                                    <p className="delivery">We do not deliver food on Saturday and Sunday.</p>
                                 </div>
                             </div>
                             <div className="row">

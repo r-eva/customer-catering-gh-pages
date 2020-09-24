@@ -30,7 +30,7 @@ const Healty = () => {
                                 <Link to='/product-detail/8'><Card.Img variant="top" src={Lesscolesterol}/></Link>
                             </div>
                             <Card.Body>
-                                <Card.Title>Less Collesterol</Card.Title>
+                                <Card.Title>Less Cholesterol</Card.Title>
                                 <Card.Text>
                                     We offer a diet rich in vegetables, poultry, fish, and nuts to low your
                                     cholesterol.

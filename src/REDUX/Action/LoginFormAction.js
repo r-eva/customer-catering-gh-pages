@@ -22,7 +22,7 @@ export const loginUser = (dataUser) => {
                })
            })
            .catch(err => {
-               console.log(err.respose)
+               console.log(err)
                dispatch({
                     type: LOGIN_FAILED,
                     payload: err.response.data.message

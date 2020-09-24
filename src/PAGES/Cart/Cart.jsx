@@ -147,9 +147,9 @@ class Cart extends Component {
                     }              
                     <td>
                         <div className="d-flex flex-row justify-content-center">
-                            <input type="button" className="btn btn-secondary" value='+' onClick={()=> this.onBtnEditQty('add', idx)}/>
-                            <input type="button" className="btn btn-secondary mx-1" value={val.JumlahBox}/>
                             <input type="button" className="btn btn-secondary" value='-' onClick={()=> this.onBtnEditQty('min', idx)}/>
+                            <input type="button" className="btn btn-secondary mx-1" value={val.JumlahBox}/>
+                            <input type="button" className="btn btn-secondary" value='+' onClick={()=> this.onBtnEditQty('add', idx)}/>
                         </div>
                     </td>
                     <td>{val.TanggalMulai}</td>
@@ -232,23 +232,17 @@ class Cart extends Component {
                                 </Table>
                             </div>
                         </div>
-                        <div className="row m-5">
+                        <div className="row m-2">
                             <div className="col-12 text-center">
-                                {
-                                    this.state.cart.length === 0
-                                    ?
-                                    null
-                                    :
-                                    <>
-                                        <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
-                                        <h3 className="font-weight-bold text-danger h3 mb-3">Rp. {this.totalBelanjaan()}</h3>
-                                        <ModalCheckout totalBelanjaan={this.totalBelanjaan()}/>
-                                    </>
-                                }
+                                <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
+                                <h3 className="font-weight-bold text-danger h3 mb-3">Rp. {this.totalBelanjaan()}</h3>
                             </div>
                         </div>
                     </div>
                 }
+                <center className="mb-5">
+                <ModalCheckout totalBelanjaan={this.totalBelanjaan()}/>
+                </center>
             </section>
         );
     }

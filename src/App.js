@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {connect} from 'react-redux'
-import {keepLogin, checkLocalStorage} from './REDUX/Action/userAction'
+import axios from 'axios'
+import {urlApi} from './HELPERS/database'
+import {keepLogin, checkLocalStorage, confirmLogin} from './REDUX/Action/userAction'
 import ScrollToTop from './HELPERS/scrollTop'
 import LandingPage from './PAGES/LandingPage/Main/LandingPage'
 import Navbar from './PAGES/Navbar/Navbar'
@@ -19,7 +21,6 @@ import Wishlist from './PAGES/Wishlist/Wishlist'
 import Promo from './PAGES/Promo/Promo'
 
 class App extends Component {
-
   componentDidMount() {
     var token = localStorage.getItem('token')
     if (token) {
@@ -27,10 +28,25 @@ class App extends Component {
     } else {
         this.props.checkLocalStorage()
     }
-}
+  }
+
+  componentDidUpdate() {
+    if (this.props.user.email !== '') {
+      axios.get(urlApi + 'user/confirmedEmailOtherScreen/' + this.props.user.email)
+      .then((res) => {
+        if (this.props.user.status !== res.data.status) {
+          localStorage.setItem('token', res.data.token)
+          this.props.confirmLogin(res.data)
+          console.log('masuk')
+        } 
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  }
 
   render() {
-
     if (!this.props.user.userChecker) {
       return (
           <div className="spinner-border" role="status">
@@ -68,4 +84,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {keepLogin, checkLocalStorage})(App);
+export default connect(mapStateToProps, {keepLogin, checkLocalStorage, confirmLogin})(App);

@@ -5,7 +5,7 @@ import Axios from 'axios'
 import {urlApi} from '../../HELPERS/database'
 import swal from 'sweetalert'
 import './History.css'
-import {Table, Modal, Button, Spinner} from 'react-bootstrap'
+import {Table, Modal, Button, Spinner, Card} from 'react-bootstrap'
 
 class History extends Component {
     state = {
@@ -284,12 +284,14 @@ class History extends Component {
                             this.state.keluarBoxPembayaran === 1
                             ?
                             <div className="row justify-content-center mb-5">
-                                <div className="col-12 mb-3">
+                                <div className="col-8 mb-3">
+                                    <Card>
                                     <div className="card-header text-center font-weight-bold">
-                                        <h5 className="h5">Please Upload Your Payment Receipt</h5>
+                                        <h5 className="h5">Please Upload Your Proof of Payment</h5>
                                     </div>
                                     <div className="card-body text-center">
                                         <input type="file" onChange={this.imagePembayaranChosed}/>
+                                        <p className="my-3">Your document must be in .jpeg/.jpg /.pdf format.</p>
                                     </div>
                                     <div className="card-footer text-center">
                                         {
@@ -312,6 +314,7 @@ class History extends Component {
                                         }
 
                                     </div>
+                                    </Card>
                                 </div>
                             </div>
                             :

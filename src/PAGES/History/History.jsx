@@ -48,29 +48,29 @@ class History extends Component {
     renderHistoryDetail = () => {
         var jsx = this.state.historyDetail.map((val, idx) => {
             return (
-                    <div key = {val.id} >
-                        <h6>{idx + 1}. Package {val.namaPaket} </h6>
-                        <div className="pl-3">
-                            <p>Price: {val.harga}<br/>
+                    <tr key = {val.id}>
+                        <td>{idx + 1}</td>
+                        <td>{val.namaPaket}</td>
+                        <td>{val.harga}</td>
+                        <td>
                             {
                                 val.discount === 0
                                 ?
                                 <>
-                                    Discount: Normal Price<br/>
+                                    <p>Normal Price</p>
                                 </>
                                 :
-                                <>
-                                    Discount: {val.discount}%<br/>
-                                </>
+                                <p>{val.discount}%</p>
+
                             }
-                            Amount of Box: {val.JumlahBox} <br/>
-                            Start Date: {val.TanggalMulai.slice(0, 10)}<br/>
-                            End Date: {val.TanggalBerakhir.slice(0, 10)}<br/>
-                            Duration: {val.Durasi}<br/>
-                            Subtotal: {val.Durasi * val.JumlahBox * (val.harga - (val.harga * val.discount/100))}
-                            </p>
-                        </div>
-                    </div>      
+                        </td>
+                        <td>{val.JumlahBox}</td>
+                        <td>{val.TanggalMulai.slice(0, 10)}</td>
+                        <td>{val.TanggalBerakhir.slice(0, 10)}</td>
+                        <td>{val.Durasi}</td>
+                        <td>{val.Durasi * val.JumlahBox * (val.harga - (val.harga * val.discount/100))}</td>
+                        
+                    </tr>
                     )
         })
         return jsx
@@ -208,10 +208,31 @@ class History extends Component {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {this.renderHistoryDetail()}
+                <Table striped bordered hover size="sm" className="text-center">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Package </th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>Qty</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Duration</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderHistoryDetail()}
+                        <tr>
+                            <td colSpan="6">TOTAL</td>
+                            <td colSpan="3">{this.state.historyDetail[0].TotalBelanja}</td>
+                        </tr>
+                    </tbody>
+                </Table>
                 <br/>
                 <div className="font-weight-bold pl-3">
-                    <p>TOTAL: Rp. {this.state.historyDetail[0].TotalBelanja}<br/>
+                    <p>
                     Recipient Name: {this.state.historyDetail[0].NamaPenerima}<br/>
                     Delivery Address: {this.state.historyDetail[0].AlamatPenerima}<br/>
                     Postal Code: {this.state.historyDetail[0].KodePosPenerima}

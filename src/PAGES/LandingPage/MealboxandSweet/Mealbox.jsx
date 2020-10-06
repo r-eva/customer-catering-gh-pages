@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import {urlApi} from '../../../HELPERS/database'
 import { Card, Spinner } from 'react-bootstrap'
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import {Link} from 'react-router-dom'
 import './Mainmenu.css'
 
@@ -13,6 +14,7 @@ class MealboxAndSweet extends Component {
         randomMealBox: [],
         getDataLangganan: false,
         getDataMealbox: false
+
     }
 
     componentDidMount () {
@@ -40,6 +42,14 @@ class MealboxAndSweet extends Component {
         .catch(err => {
             console.log(err)
         })
+    }
+
+    buttonRight = () => {
+        document.getElementById('container').scrollLeft += 485
+    }
+
+    buttonLeft = () => {
+        document.getElementById('container').scrollLeft -= 485  
     }
 
     renderBox = () => {
@@ -134,17 +144,19 @@ class MealboxAndSweet extends Component {
                     <input type="button" defaultValue="VIEW ALL SCHEDULE" className="btn btn-success btn-block" />
                 </div>
                 <div className="col-12 col-md-9">
-                    <div className="row card-box-mainmenu">
-                        {
-                            this.state.randomMealBox.length > 0
-                            ?
-                            <>{this.renderBox()}</>
-                            :
-                            <center>
-                                <Spinner animation="border" variant="secondary"/>
-                            </center>
-                        }
-                    </div>
+                    {
+                        this.state.randomMealBox.length > 0
+                        ?
+                        <div className="row card-box-mainmenu" id="container">                      
+                            {this.renderBox()}
+                            <button className="button-scroll mb-5" onClick={this.buttonLeft}><IoIosArrowBack/></button>
+                            <button className="button-scroll2 mb-5" onClick={this.buttonRight}><IoIosArrowForward/></button>
+                        </div>
+                    :
+                    <center>
+                        <Spinner animation="border" variant="secondary"/>
+                        </center>
+                    }
                 </div>
                 <div className="col-12 col-md-3">
                     <div className="row">

@@ -27,7 +27,7 @@ class ModalCheckout extends Component {
         } else {
             this.setState({resetDanSubmitHistory: true})
             var TanggalTransaksi = moment(new Date()).format("YYYY-MM-DD HH:mm:ss").toString()
-            var BatasAkhirBayar = moment(new Date()).add(2, 'hours').format("YYYY-MM-DD HH:mm:ss").toString()
+            var BatasAkhirBayar = moment(new Date()).add(1, 'hours').format("YYYY-MM-DD HH:mm:ss").toString()
             var postingHistory = {
                 TanggalTransaksi: TanggalTransaksi,
                 UserId: this.props.user.id,

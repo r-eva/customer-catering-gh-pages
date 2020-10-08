@@ -13,7 +13,7 @@ const Healty = () => {
                 <div className="row text-center justify-content-center">
                     <div className="col-10">
                         <div>
-                            <h1 className="h1 text-center text-danger font-weight-bold">OUR HEALTY FOOD</h1>
+                            <h1 className="h1-responsive text-center text-danger font-weight-bold">OUR HEALTY FOOD</h1>
                             <p className="lead text-center">We provide delicious, tasty and healthy food.
                                 Please chose your meal today pursuant to your diet preference.
                             </p>

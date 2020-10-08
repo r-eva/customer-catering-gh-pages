@@ -156,8 +156,8 @@ class Sweet extends Component {
                         ?
                         <div className="row card-box-mainmenu" id="containerSweet">
                             {this.renderBox()}
-                            <button className="button-scroll mb-5" onClick={this.buttonLeft}><IoIosArrowBack/></button>
-                            <button className="button-scroll2 mb-5" onClick={this.buttonRight}><IoIosArrowForward/></button>
+                            <button className="button-scroll mb-5 d-none d-sm-block" onClick={this.buttonLeft}><IoIosArrowBack/></button>
+                            <button className="button-scroll2 mb-5 d-none d-sm-block" onClick={this.buttonRight}><IoIosArrowForward/></button>
                         </div>
                         :
                         <center>

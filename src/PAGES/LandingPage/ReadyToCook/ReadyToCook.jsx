@@ -36,7 +36,7 @@ class ReadyToCook extends Component {
                             alt="Third slide"/>
                         </Link>
                         <Carousel.Caption>
-                            <h3>PASTA PACKAGE</h3>
+                            <h3 className="h3-responsive font-weight-bold">PASTA PACKAGE</h3>
                             <p>Several kind of pasta, such as Macaroni, Fusilli, and Farfalle.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -48,7 +48,7 @@ class ReadyToCook extends Component {
                             alt="Third slide"/>
                         </Link>
                         <Carousel.Caption>
-                            <h3>SPICES AND OTHER MATERIAL</h3>
+                            <h3 className="h3-responsive font-weight-bold">SPICES AND OTHER MATERIAL</h3>
                             <p>Roasted Chicken, Salmon Fillet, Tenderloin Steak along with its spices and sauce.</p>
                         </Carousel.Caption>
                     </Carousel.Item>

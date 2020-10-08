@@ -121,7 +121,7 @@ class Subscribe extends Component {
                 <div className="container-fluid container-md mt-3">
                     <div className="d-flex justify-content-center mt-5">
                         <div className="p-2 bg-subscribe-tag">
-                            <p className="font-weight-bold h4 text-center">SUBSCRIBTION</p>
+                            <p className="font-weight-bold h4 text-center">SUBSCRIPTION</p>
                         </div>
                     </div>
                     <div className="d-md-flex flex-row">

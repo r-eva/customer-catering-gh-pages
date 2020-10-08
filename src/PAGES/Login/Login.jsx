@@ -27,7 +27,7 @@ class Login extends Component {
 
     renderButtonLogin = () => {
         if (!this.props.loginForm.loading) {
-            return <button type="button" className="btn btn-danger mb-3 mb-3" onClick={this.onLoginBtnHandler}>SIGN IN</button>
+            return <button type="submit" className="btn btn-danger mb-3 mb-3" onClick={this.onLoginBtnHandler}>SIGN IN</button>
         } else {
             return(
                 <>
@@ -63,9 +63,7 @@ class Login extends Component {
                             </InputGroup.Prepend>
                             <FormControl placeholder="Email" onChange={(e) => this.setState({inputEmail: e.target.value})}/>
                         </InputGroup>
-                    </Form>
-                    <Form className="mb-4 pr-5 pl-5">
-                        <InputGroup>
+                        <InputGroup className="mt-3 mb-4">
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1">
                                     <IconContext.Provider
@@ -79,16 +77,16 @@ class Login extends Component {
                             </InputGroup.Prepend>
                             <FormControl placeholder="Password" type="password" onChange={(e) => this.setState({inputPassword: e.target.value})}/>
                         </InputGroup>
+                        <div className="text-center">
+                            {this.renderButtonLogin()}
+                            {/* <h6 style={{fontSize: '13px'}} className='text-center'>Or login in with</h6>
+                            <Facebook/>
+                            <img className="mb-3" src={Maillogo} alt="iconMail" width="35px"/> */}
+                        </div>
+                        <div className="text-center mt-2 mb-3 text-danger">
+                            {this.props.loginForm.error}
+                        </div>
                     </Form>
-                    <div className="text-center mt-2 mb-3 text-danger">
-                        {this.props.loginForm.error}
-                    </div>
-                    <div className="text-center">
-                        {this.renderButtonLogin()}
-                        {/* <h6 style={{fontSize: '13px'}} className='text-center'>Or login in with</h6>
-                        <Facebook/>
-                        <img className="mb-3" src={Maillogo} alt="iconMail" width="35px"/> */}
-                    </div>
                 </Card.Body>
             </Card>
         </div>

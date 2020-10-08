@@ -57,7 +57,7 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar expand="md" fixed="top" style={{background: this.state.bgNavbar, height: this.state.height}} className="transition-scroll">
+                <Navbar collapseOnSelect expand="md" fixed="top" style={{background: this.state.bgNavbar, height: this.state.height}} className="transition-scroll">
                     <Nav className="d-md-none">
                         <Navbar.Brand as={Link} to="/">
                             {
@@ -73,10 +73,10 @@ class Navigation extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between all-nav">
                         <Nav>
-                            <Nav.Link as={Link} to="/Subscribe" className="link-nav">SUBSCRIBE</Nav.Link>
-                            <Nav.Link as={Link} to="/Promo" className="link-nav">PROMO</Nav.Link>
+                            <Nav.Link eventKey="1" as={Link} to="/Subscribe" className="link-nav">SUBSCRIBE</Nav.Link>
+                            <Nav.Link eventKey="2" as={Link} to="/Promo" className="link-nav">PROMO</Nav.Link>
                         </Nav>
-                            <Nav.Link as={Link} to="/" className="d-none d-md-block">
+                            <Nav.Link eventKey="3" as={Link} to="/" className="d-none d-md-block">
                                 {
                                     this.state.bgNavbar === ""
                                     ?
@@ -95,25 +95,25 @@ class Navigation extends Component {
                                                 this.props.user.status === "Verified"
                                                 ?
                                                     <>
-                                                        <NavDropdown.Item as={Link} to="/History" className="dropdown-item">HISTORY</NavDropdown.Item>
-                                                        <NavDropdown.Item as={Link} to="/Cart">CART</NavDropdown.Item>
-                                                        <NavDropdown.Item as={Link} to="/Wishlist">WISHLIST</NavDropdown.Item>
+                                                        <NavDropdown.Item eventKey="4" as={Link} to="/History" className="dropdown-item">HISTORY</NavDropdown.Item>
+                                                        <NavDropdown.Item eventKey="5" as={Link} to="/Cart">CART</NavDropdown.Item>
+                                                        <NavDropdown.Item eventKey="11" as={Link} to="/Wishlist">WISHLIST</NavDropdown.Item>
                                                     </>
                                                 :
                                                     <>
-                                                        <NavDropdown.Item as={Link} to="/Wishlist">WISHLIST</NavDropdown.Item>
-                                                        <NavDropdown.Item as={Link} to={`/waitingemailverification?email=${this.props.user.encryptedEmail}`}>VERIFICATION</NavDropdown.Item>
+                                                        <NavDropdown.Item eventKey="6" as={Link} to="/Wishlist">WISHLIST</NavDropdown.Item>
+                                                        <NavDropdown.Item eventKey="7" as={Link} to={`/waitingemailverification?email=${this.props.user.encryptedEmail}`}>VERIFICATION</NavDropdown.Item>
                                                     </>                             
                                             }
                                             <NavDropdown.Divider/>
-                                            <NavDropdown.Item onClick={this.props.userLogout}>LOGOUT</NavDropdown.Item>
+                                            <NavDropdown.Item eventKey="8" onClick={this.props.userLogout}>LOGOUT</NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link as={Link} to="/Cart" className="link-nav"><FaShoppingBag/>&nbsp;{this.props.jumlahCart}</Nav.Link>
+                                    <Nav.Link as={Link} eventKey="9" to="/Cart" className="link-nav"><FaShoppingBag/>&nbsp;{this.props.jumlahCart}</Nav.Link>
                                 </>
                                 :
                                 <>
-                                    <Nav.Link as={Link} to="/Login" className="link-nav">SIGN IN</Nav.Link>
-                                    <Nav.Link as={Link} to="/Register" className="link-nav">REGISTER</Nav.Link>
+                                    <Nav.Link as={Link} to="/Login" eventKey="9" className="link-nav">SIGN IN</Nav.Link>
+                                    <Nav.Link as={Link} to="/Register" eventKey="10" className="link-nav">REGISTER</Nav.Link>
                                 </>
                                 
                             }

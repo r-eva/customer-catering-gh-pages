@@ -63,29 +63,32 @@ class Navigation extends Component {
                             {
                                 this.state.bgNavbar === ""
                                 ?
-                                <Image src={Logo} alt='LogoCCC' fluid className="all-nav link-logo"/>
+                                <Image src={Logo} alt='LogoCCC' fluid className="all-nav link-logo-mobile"/>
                                 :
-                                <Image src={LogoScroll} alt='LogoCCC' fluid className="all-nav link-logo"/>
+                                <Image src={LogoScroll} alt='LogoCCC' fluid className="all-nav link-logo-mobile"/>
                             }
                         
                         </Navbar.Brand>
                     </Nav>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle-nav"/>
-                    <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between all-nav">
-                        <Nav>
+                    <Navbar.Collapse id="basic-navbar-nav" className="all-nav">
+                        <Nav className="navbar-center">
+                            <div className="d-md-flex align-self-md-center mr-md-auto">
                             <Nav.Link eventKey="1" as={Link} to="/Subscribe" className="link-nav">SUBSCRIBE</Nav.Link>
                             <Nav.Link eventKey="2" as={Link} to="/Promo" className="link-nav">PROMO</Nav.Link>
-                        </Nav>
-                            <Nav.Link eventKey="3" as={Link} to="/" className="d-none d-md-block">
+                            </div>
+                            <Nav.Link eventKey="3" as={Link} to="/" className="d-none d-md-block set-logocenter mt-2">
+                                <center>
                                 {
                                     this.state.bgNavbar === ""
                                     ?
                                     <Image src={Logo} alt='LogoCCC' fluid/>
                                     :
                                     <Image src={LogoScroll} alt='LogoCCC' fluid/>
-                                }                            
+                                }  
+                                </center>                          
                             </Nav.Link>
-                        <Nav>
+                            <div className="d-md-flex align-self-md-center ml-md-auto">
                             {
                                 this.props.user.username !== ''
                                 ?
@@ -117,6 +120,7 @@ class Navigation extends Component {
                                 </>
                                 
                             }
+                            </div>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

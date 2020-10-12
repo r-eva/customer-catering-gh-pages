@@ -27,7 +27,7 @@ class Register extends Component {
         }
     }
 
-    onRegisterBtnHandler = () => {
+    onRegisterBtnHandler = (e) => {
         var inputUser = {
             username: this.state.inputUsername,
             email: this.state.inputEmail,
@@ -35,6 +35,7 @@ class Register extends Component {
             confirmPassword: this.state.inputRepeatPassword
         }
         this.props.registerUser(inputUser)
+        e.preventDefault()
     }
 
     render() {
@@ -54,7 +55,7 @@ class Register extends Component {
                         {/* HEADING CARD */}
     
                         {/* USERNAME AND EMAIL ROW */}
-                        <Form className="mb-2 pr-3 pl-3">
+                        <Form className="mb-2 px-2" onSubmit={this.onRegisterBtnHandler}>
                             <InputGroup className="mr-md-3 mb-2">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text id="basic-addon1">
@@ -89,11 +90,10 @@ class Register extends Component {
                                     aria-label="Username"
                                     aria-describedby="basic-addon1" onChange={(e) => this.setState({inputEmail: e.target.value})}/>
                             </InputGroup>
-                        </Form>
+                        
                         {/* END USERNAME AND EMAIL ROW */}
                         {/* PASSWORD AND REPEAT PASSWORD ROW */}
-                        <Form className="mb-2 pr-3 pl-3">
-                            <InputGroup className="mr-md-3 mb-2">
+                            <InputGroup className="mr-md-3 my-2">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text id="basic-addon1">
                                         <IconContext.Provider
@@ -129,7 +129,7 @@ class Register extends Component {
                                     aria-label="Username"
                                     aria-describedby="basic-addon1" onChange={(e) => this.setState({inputRepeatPassword: e.target.value})}/>
                             </InputGroup>
-                        </Form>
+                        
                         {/* END PASSWORD AND REPEAT PASSWORD ROW */}
     
                         {/* TEXT CORRECTION */}
@@ -162,7 +162,7 @@ class Register extends Component {
                                         :
                                         <>  
                                             <div className="text-center">
-                                                <Button variant="danger" className="mb-3" onClick={this.onRegisterBtnHandler}>REGISTER</Button>
+                                                <Button type="submit" variant="danger" className="mb-3" onClick={this.onRegisterBtnHandler}>REGISTER</Button>
                                             </div>
                                         </>
                                     }
@@ -171,6 +171,7 @@ class Register extends Component {
                         </div>
                         
                         {/* END BUTTON SUBMIT AND AND LOGIN WITH SOCIAL MEDIA */}
+                        </Form>
                     </Card.Body>
                 </Card>
                 {/* END CARD REGISTER */}

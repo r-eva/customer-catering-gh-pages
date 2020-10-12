@@ -5,6 +5,13 @@
     margin: 0px 20px
 }
 
+.navbar-center {
+    flex: 1;
+    direction: column;
+    margin: auto;
+    display: flex;
+}
+
 .link-nav {
     margin: 0px 10px;
     background: white
@@ -15,9 +22,19 @@
     color: white!important;
 }
 
-.link-logo {
+.link-logo.mobile {
     margin: 10px;
     padding-left: 20px;
+}
+
+.set-logocenter {
+    position: absolute;
+    left: 0; 
+    right: 0;
+    top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 300px
 }
 
 .toggle-nav {

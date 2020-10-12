@@ -18,7 +18,7 @@ const Tagline = () => {
                             food; it's to give you a full service, worry free dining experience.
                         </p>
                     </div>
-                    <div className="text-center pb-4 pb-md-2">
+                    <div className="text-center pb-5 pb-md-2">
                         <Button variant="danger">START SUBSCRIPTION</Button>
                     </div>
                 </div>

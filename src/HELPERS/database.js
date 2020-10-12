@@ -1,3 +1,3 @@
-export const urlApi = 'https://api-catering.herokuapp.com/'
+// export const urlApi = 'https://api-catering.herokuapp.com/'
 
-// export const urlApi = 'http://localhost:1997/'
+export const urlApi = 'http://localhost:1997/'

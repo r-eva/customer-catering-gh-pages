@@ -16,7 +16,7 @@ class Navigation extends Component {
         cart: this.props.jumlahCart,
         isOpenDropdown: false,
         bgNavbar: "",
-        height: "",
+        height: "100px",
     }
 
     componentDidMount() {
@@ -42,7 +42,6 @@ class Navigation extends Component {
     }
 
     handleScroll = () => {
-
         if (window.pageYOffset > 0) {
             if(!this.state.bgNavbar) {
                 this.setState({bgNavbar: "white", height: "70px"})

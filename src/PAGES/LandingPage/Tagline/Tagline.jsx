@@ -13,13 +13,13 @@ const Tagline = () => {
                 </div>
                 <div className="d-md-flex flex-row">
                     <div className="p-2">
-                        <h4 className="tagline">
+                        <p className="tagline font-weight-bold">
                             We respect and appreciate the eating experience. Our mission isn't just provide
                             food; it's to give you a full service, worry free dining experience.
-                        </h4>
+                        </p>
                     </div>
-                    <div className="text-center pb-5 pb-md-2">
-                        <Button variant="danger">START SUBSCRIBTION</Button>
+                    <div className="text-center pb-4 pb-md-2">
+                        <Button variant="danger">START SUBSCRIPTION</Button>
                     </div>
                 </div>
             </div>

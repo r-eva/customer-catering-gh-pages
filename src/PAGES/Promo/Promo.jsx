@@ -77,9 +77,9 @@ class Promo extends Component {
                             </div>
                         </div>
                         <div className="d-md-flex flex-row justify-content-center">
-                            <div className="mt-2">
-                                <div className="tagline-promo h4">“A healthy diet doesn't have to be expensive.There are plenty of affordable, nutrient-dense foods you can purchase without breaking the bank. The menu listed below are both cheap and healthy, making them a great addition to your diet.”
-                                </div>
+                            <div className="mt-3">
+                                <p className="tagline-promo text-center">“A healthy diet doesn't have to be expensive.There are plenty of affordable, nutrient-dense foods you can purchase without breaking the bank. The menu listed below are both cheap and healthy, making them a great addition to your diet.”
+                                </p>
                             </div>
                         </div>
                     </div>

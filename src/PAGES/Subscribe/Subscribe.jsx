@@ -117,15 +117,15 @@ class Subscribe extends Component {
     render() {
         return (
         <section>
-            <div className="bg-tagline-subscribe d-flex align-items-center p-5">
+            <div className="bg-tagline-subscribe d-flex align-items-center">
                 <div className="container-fluid container-md mt-3">
                     <div className="d-flex justify-content-center mt-5">
                         <div className="p-2 bg-subscribe-tag">
                             <p className="font-weight-bold h4 text-center">SUBSCRIPTION</p>
                         </div>
                     </div>
-                    <div className="d-md-flex flex-row">
-                        <div className="p-2 mt-2">
+                    <div className="d-md-flex flex-row justify-content-center">
+                        <div className="mt-3">
                             <p className="tagline-sentence font-weight-bold text-center">
                             Chew & Cheer will feature an outstanding New Traditional-Javaneshe menu with a touch of Western influence in an upscale and cozy atmosphere.
                             The menu is inspired from different cuisine's specialties and will appeal to a wide and varied clientele.

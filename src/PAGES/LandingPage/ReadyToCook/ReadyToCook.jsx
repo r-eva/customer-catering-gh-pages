@@ -3,7 +3,7 @@ import {Carousel} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import RTC1 from '../../../IMG/Landingpage/RTC/RTC1.jpeg'
 import RTC2 from '../../../IMG/Landingpage/RTC/RTC2.jpeg'
-import RTC3 from '../../../IMG/Landingpage/RTC/RTC3.jpg'
+import RTC3 from '../../../IMG/Landingpage/RTC/RTC3.jpeg'
 import './ReadyToCook.css'
 
 class ReadyToCook extends Component {
@@ -48,7 +48,7 @@ class ReadyToCook extends Component {
                             alt="Third slide"/>
                         </Link>
                         <Carousel.Caption>
-                            <h3 className="h3-responsive font-weight-bold">SPICES AND OTHER MATERIAL</h3>
+                            <h3 className="h3-responsive font-weight-bold">MEAT AND STEAK</h3>
                             <p>Roasted Chicken, Salmon Fillet, Tenderloin Steak along with its spices and sauce.</p>
                         </Carousel.Caption>
                     </Carousel.Item>

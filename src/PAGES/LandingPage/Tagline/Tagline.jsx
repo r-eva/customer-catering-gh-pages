@@ -8,17 +8,17 @@ const Tagline = () => {
             <div className="container">
                 <div className="d-inline-flex">
                     <div className="p-sm-2 bg-success">
-                        <h3 className="font-weight-bold h3-responsive">Experience Delicious!</h3>
+                        <h3 className="font-weight-bold">Experience Delicious!</h3>
                     </div>
                 </div>
                 <div className="d-md-flex flex-row">
                     <div className="p-2">
-                        <h4 className="tagline h4-responsive">
+                        <h4 className="tagline">
                             We respect and appreciate the eating experience. Our mission isn't just provide
                             food; it's to give you a full service, worry free dining experience.
                         </h4>
                     </div>
-                    <div className="text-center">
+                    <div className="text-center pb-5 pb-md-2">
                         <Button variant="danger">START SUBSCRIBTION</Button>
                     </div>
                 </div>

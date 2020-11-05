@@ -86,7 +86,7 @@ class Cart extends Component {
         var cnt = 1
         var tmpDate = moment(ubahFormat)
             while (cnt < arrCart[index].Durasi) {
-                tmpDate = tmpDate.add('days', 1);
+                tmpDate = tmpDate.add(1,'days');
                 if (tmpDate.weekday() !== moment().day("Sunday").weekday() && tmpDate.weekday() !== moment().day("Saturday").weekday()) {
                     cnt = cnt + 1;
                 }

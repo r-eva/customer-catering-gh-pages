@@ -240,15 +240,7 @@ class History extends Component {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                {
-                    this.state.dataLengkap
-                    ?
-                    <Button variant="success" onClick={this.resetDanSubmitHistory}>OK</Button>
-                    :
-                    <>
-                        <Button variant="secondary" onClick={() => this.setState({paymentMode: false}), props.onHide}>CLOSE</Button>
-                    </>
-                }
+                <Button variant="secondary" onClick={() => this.setState({paymentMode: false, modalShow: false, historyMode: false, historyDetail: []})}>CLOSE</Button>
             </Modal.Footer>
           </Modal>
         );

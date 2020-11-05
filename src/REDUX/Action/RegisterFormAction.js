@@ -13,7 +13,7 @@ export const registerUser = (user) => {
         if (user.email !== '' && user.username !== ''
             && user.username !== '' && user.confirmEmail !== '' && user.confirmPassword !== '') {
                     if (user.password === user.confirmPassword) {
-                        var emailValidator = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+                        var emailValidator = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
                         if (!emailValidator.test(user.email)) {
                             dispatch({
                                 type: REGISTER_FAILED,

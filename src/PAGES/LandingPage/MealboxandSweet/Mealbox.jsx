@@ -93,10 +93,10 @@ class MealboxAndSweet extends Component {
                                         val.discount > 0
                                         ?
                                         <> 
-                                            <Card.Text className="discounted-price-mainmenu text-right mr-2">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</Card.Text>
+                                            <Card.Text className="discounted-price-mainmenu text-right mr-2">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</Card.Text>
                                         </>
                                         :
-                                        <Card.Text className="text-right mr-2 font-price-mainmenu">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</Card.Text>
+                                        <Card.Text className="text-right mr-2 font-price-mainmenu">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</Card.Text>
                                     }
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ class MealboxAndSweet extends Component {
                                         val.discount > 0
                                         ?
                                         <>
-                                            <Card.Text className="discount-price-mainmenu text-right mr-2">Rp. {new Intl.NumberFormat('id-ID').format(val.harga - (val.harga * (val.discount/100)))}</Card.Text>
+                                            <Card.Text className="discount-price-mainmenu text-right mr-2">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga - (val.harga * (val.discount/100)))}</Card.Text>
                                         </>
                                         :
                                         <Card.Text>&nbsp;</Card.Text>

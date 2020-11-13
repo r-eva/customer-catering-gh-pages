@@ -235,7 +235,7 @@ class Cart extends Component {
                         <div className="row m-2">
                             <div className="col-12 text-center">
                                 <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
-                                <h3 className="font-weight-bold text-danger h3 mb-3">Rp. {this.totalBelanjaan()}</h3>
+                                <h3 className="font-weight-bold text-danger h3 mb-3">&euro; {this.totalBelanjaan()}</h3>
                             </div>
                         </div>
                     </div>

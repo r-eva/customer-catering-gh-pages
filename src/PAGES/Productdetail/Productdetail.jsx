@@ -267,11 +267,11 @@ class Productdetail extends Component {
                                         {this.state.dataPaketLangganan.discount}%
                                         </h6>
                                     </div>
-                                    <span className="price-tag-discount">Rp. {this.state.dataPaketLangganan.harga}
+                                    <span className="price-tag-discount">&euro; {this.state.dataPaketLangganan.harga}
                                     </span>
                                 </>
                             }
-                            <h1 className="final-price">Rp. {this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100))}</h1>
+                            <h1 className="final-price">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>
                             <div className='row mt-2 mt-md-4'>
                                 <div className='col-12'>
                                     <p className="product-description">{this.state.dataPaketLangganan.deskripsi}</p>
@@ -345,7 +345,7 @@ class Productdetail extends Component {
                                                 <h1 className="font-counting h6">&nbsp;</h1>                                       
                                                 :
                                                 <h1 className="font-counting h6">
-                                                    {this.state.jumlahBox} box * {this.state.inputDurasi} days * Rp.{this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100))}
+                                                    {this.state.jumlahBox} box * {this.state.inputDurasi} days * &euro; {this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100))}
                                                 </h1>                                             
                                             }
                                         </div>
@@ -358,9 +358,9 @@ class Productdetail extends Component {
                                             {
                                                 this.refs.inputDurasi === 0
                                                 ?
-                                                <h1 className="text-warning font-weight-bold font-bill h5">Rp. 0</h1>                                       
+                                                <h1 className="text-warning font-weight-bold font-bill h5">&euro; 0</h1>                                       
                                                 :
-                                                <h1 className="text-warning font-weight-bold font-bill h5">Rp. {this.state.jumlahBox * this.state.inputDurasi * (this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>                                             
+                                                <h1 className="text-warning font-weight-bold font-bill h5">&euro; {this.state.jumlahBox * this.state.inputDurasi * (this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>                                             
                                             }
                                         </div>
                                     </div>

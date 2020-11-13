@@ -50,12 +50,12 @@ class Promo extends Component {
                                 val.discount > 0
                                 ?
                                 <>
-                                    <h6 className="pl-2 font-price-discount-promo">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</h6>
-                                    <h6 className="font-price-discounted-promo pr-2">Now Rp. {new Intl.NumberFormat('id-ID').format(val.harga - (val.harga * (val.discount/100)))}</h6>
+                                    <h6 className="pl-2 font-price-discount-promo">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</h6>
+                                    <h6 className="font-price-discounted-promo pr-2">Now {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga - (val.harga * (val.discount/100)))}</h6>
                                 </>
                                 :
                                 <>
-                                    <h6 className="pl-2 font-price-promo">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</h6>
+                                    <h6 className="pl-2 font-price-promo">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</h6>
                                     <h6 className="font-price-promo">&nbsp;</h6>
                                 </>
                             }

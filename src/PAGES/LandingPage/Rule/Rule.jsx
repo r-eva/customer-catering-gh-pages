@@ -2,7 +2,7 @@ import React from 'react';
 import Leaf from '../../../IMG/Landingpage/Rule/leaf.png'
 import Pig from '../../../IMG/Landingpage/Rule/pig.png'
 import Calendar from '../../../IMG/Landingpage/Rule/calendar.png'
-import Fryingpan from '../../../IMG/Landingpage/Rule/fryingpan.png'
+import Gourmet from '../../../IMG/Landingpage/Rule/gourmet.png'
 
 const Rule = () => {
     return (
@@ -52,8 +52,8 @@ const Rule = () => {
                         <div className="media mt-4">
                             <div className="pr-2">
                                 <img
-                                    src={Fryingpan}
-                                    width={70}
+                                    src={Gourmet}
+                                    width={75}
                                     alt=""/>
                             </div>
                             <div className="media-body">

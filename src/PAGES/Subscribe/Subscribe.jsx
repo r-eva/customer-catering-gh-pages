@@ -97,12 +97,12 @@ class Subscribe extends Component {
                                 val.discount > 0
                                 ?
                                 <>
-                                    <h6 className="pl-2 font-price-discount">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</h6>
-                                    <h6 className="font-price-discounted pr-2">Now Rp. {new Intl.NumberFormat('id-ID').format(val.harga - (val.harga * (val.discount/100)))}</h6>
+                                    <h6 className="pl-2 font-price-discount">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</h6>
+                                    <h6 className="font-price-discounted pr-2">Now {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga - (val.harga * (val.discount/100)))}</h6>
                                 </>
                                 :
                                 <>
-                                    <h6 className="pl-2 font-price">Rp. {new Intl.NumberFormat('id-ID').format(val.harga)}</h6>
+                                    <h6 className="pl-2 font-price">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.harga)}</h6>
                                     <h6 className="font-price">&nbsp;</h6>
                                 </>
                             }
@@ -149,7 +149,7 @@ class Subscribe extends Component {
                         <Button className="parent-button btn btn-block" block onClick={this.getDataLanggananTerbaik}><img src={Best} alt='Menu Icon' className="img-button"></img><br/>BEST SELLER</Button>
                     </div>
                     <div className="col-6 mb-2 col-md-2">
-                        <Button className="parent-button btn btn-block" block onClick={this.getDataLanggananUnder20}><img src={Cheap} alt='Menu Icon' className="img-button"></img><br/>UNDER 20K</Button>
+                        <Button className="parent-button btn btn-block" block onClick={this.getDataLanggananUnder20}><img src={Cheap} alt='Menu Icon' className="img-button"></img><br/>UNDER 3&euro;</Button>
                     </div>
                     <div className="col-6 mb-2 col-md-2">
                         <Button className="parent-button btn btn-block" block onClick={() => this.getDataLanggananByKategori('healthy')}><img src={RTC} alt='Menu Icon' className="img-button"></img><br/>Other</Button>

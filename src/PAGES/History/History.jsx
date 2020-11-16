@@ -11,6 +11,7 @@ class History extends Component {
     state = {
         history: [],
         historyDetail: [],
+        data: "unloaded",
         belanjaDiproses: null,
         keluarBoxPembayaran: null,
         buktiPembayaran: null,
@@ -28,7 +29,7 @@ class History extends Component {
     getDataApi = (userId) => {
         Axios.get(urlApi + `history/getHistoryByIdUser/` + userId)
         .then((res)=>{
-            this.setState({history: res.data})
+            this.setState({history: res.data, data:"loaded"})
         })
         .catch((err) => {
             console.log(err)
@@ -256,90 +257,100 @@ class History extends Component {
                     </div>
                 </div>
                 {
-                    this.state.history.length === 0
+                    this.state.data === "unloaded"
                     ?
-                    <h1 className="text-center mt-5" style={{marginBottom: '500px'}}>YOUR HISTORY IS EMPTY</h1>
+                    <center>
+                        <Spinner animation="border" className="my-5" variant="secondary"/>
+                    </center> 
                     :
-                    <div className="container-fluid">
-                        <div className="card mb-5">
-                            <div className="card-body">
-                                <Table striped bordered hover responsive>
-                                    <thead className="text-center font-weight-bold bg-success text-white">
-                                        <tr>
-                                            <th>TRANSACTION DATE</th>
-                                            <th>TOTAL INVOICE</th>
-                                            <th>STATUS</th>
-                                            <th>PAYMENT DEADLINE</th>
-                                            <th>DETAIL</th>
-                                            <th>CANCEL</th>
-                                            <th>PAY</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.renderHistory()}
-                                    </tbody>
-                                </Table>
-                            </div>
-                        </div>
+                    <>
                         {
-                            this.state.keluarBoxPembayaran === 1
+                            this.state.history.length === 0
                             ?
-                            <div className="row justify-content-center mb-5">
-                                <div className="col-8 mb-3">
-                                    <Card>
-                                    <div className="card-header text-center font-weight-bold">
-                                        <h5 className="h5">Please Upload Your Proof of Payment</h5>
+                            <h1 className="text-center mt-5" style={{marginBottom: '500px'}}>YOUR HISTORY IS EMPTY</h1>
+                            :
+                            <div className="container-fluid">
+                                <div className="card mb-5">
+                                    <div className="card-body">
+                                        <Table striped bordered hover responsive>
+                                            <thead className="text-center font-weight-bold bg-success text-white">
+                                                <tr>
+                                                    <th>TRANSACTION DATE</th>
+                                                    <th>TOTAL INVOICE</th>
+                                                    <th>STATUS</th>
+                                                    <th>PAYMENT DEADLINE</th>
+                                                    <th>DETAIL</th>
+                                                    <th>CANCEL</th>
+                                                    <th>PAY</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.renderHistory()}
+                                            </tbody>
+                                        </Table>
                                     </div>
-                                    <div className="card-body text-center">
-                                        <input type="file" onChange={this.imagePembayaranChosed}/>
-                                        <p className="my-3">Your document must be in .jpeg/.jpg /.pdf format.</p>
-                                    </div>
-                                    <div className="card-footer text-center">
-                                        {
-                                            this.state.uploadBuktiBayarSuccess === true 
-                                            ?
-                                            null
-                                            :
-                                            <div className="row justify-content-center">
-                                                {
-                                                    this.state.uploadBuktiBayarClicked
-                                                    ?
-                                                    <Spinner animation="border" variant="secondary" className = "text-center"/>
-                                                    :
-                                                    <>
-                                                        <input type="button" value="Upload" className="btn btn-success mr-2" onClick={() => this.uploadBuktiBayar(this.state.belanjaDiproses.id)}/>
-                                                        <input type="button" value="Cancel" className="btn btn-danger" onClick={() => this.setState({keluarBoxPembayaran: null})}/>
-                                                    </>
-                                                }
-                                            </div>
-                                        }
-
-                                    </div>
-                                    </Card>
                                 </div>
+                                {
+                                    this.state.keluarBoxPembayaran === 1
+                                    ?
+                                    <div className="row justify-content-center mb-5">
+                                        <div className="col-8 mb-3">
+                                            <Card>
+                                            <div className="card-header text-center font-weight-bold">
+                                                <h5 className="h5">Please Upload Your Proof of Payment</h5>
+                                            </div>
+                                            <div className="card-body text-center">
+                                                <input type="file" onChange={this.imagePembayaranChosed}/>
+                                                <p className="my-3">Your document must be in .jpeg/.jpg /.pdf format.</p>
+                                            </div>
+                                            <div className="card-footer text-center">
+                                                {
+                                                    this.state.uploadBuktiBayarSuccess === true 
+                                                    ?
+                                                    null
+                                                    :
+                                                    <div className="row justify-content-center">
+                                                        {
+                                                            this.state.uploadBuktiBayarClicked
+                                                            ?
+                                                            <Spinner animation="border" variant="secondary" className = "text-center"/>
+                                                            :
+                                                            <>
+                                                                <input type="button" value="Upload" className="btn btn-success mr-2" onClick={() => this.uploadBuktiBayar(this.state.belanjaDiproses.id)}/>
+                                                                <input type="button" value="Cancel" className="btn btn-danger" onClick={() => this.setState({keluarBoxPembayaran: null})}/>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+
+                                            </div>
+                                            </Card>
+                                        </div>
+                                    </div>
+                                    :
+                                    null                       
+                                }
+                                {
+                                    this.state.modalShow === true 
+                                    ?
+                                    <>
+                                        {this.MyVerticallyCenteredModal(
+                                            {
+                                                show: this.state.modalShow,
+                                                onHide: () => this.setState(
+                                                            {
+                                                                modalShow: false, historyMode: false, historyDetail: []
+                                                            }
+                                                        )
+                                            }
+                                        )}
+                                    </>
+                                    :
+                                    null
+                                }
                             </div>
-                            :
-                            null                       
                         }
-                        {
-                            this.state.modalShow === true 
-                            ?
-                            <>
-                                {this.MyVerticallyCenteredModal(
-                                    {
-                                        show: this.state.modalShow,
-                                        onHide: () => this.setState(
-                                                    {
-                                                        modalShow: false, historyMode: false, historyDetail: []
-                                                    }
-                                                )
-                                    }
-                                )}
-                            </>
-                            :
-                            null
-                        }
-                    </div>
+                    </>
                 }
             </section>
         );

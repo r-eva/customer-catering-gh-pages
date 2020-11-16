@@ -73,10 +73,10 @@ class Subscribe extends Component {
 
     renderKategoriLangganan = () => {
         if (this.state.getDataLangganan === false ) {
-            return <Spinner animation="border" variant="secondary"/>
+            return <center><Spinner animation="border" variant="secondary"/></center>
         } else {
             let showData = this.state.dataLangganan.slice(this.state.page * this.state.pageContent, this.state.page * this.state.pageContent + this.state.pageContent)
-        var jsx = showData.map(val => {
+            var jsx = showData.map(val => {
             return (
                 <div className="col-6 col-md-3 my-1 my-md-3 card-mobile-subscribe align-item-strech" key={val.id}>
                     <Card>
@@ -166,7 +166,7 @@ class Subscribe extends Component {
                         <h5 className="blockquote-footer text-center"><cite title="Source Title">Steve Maraboli</cite></h5>
                     </div>
                 </div>
-                <div className="row px-2 px-md-0">
+                <div className="row px-2 px-md-0 justify-content-center">
                     {this.renderKategoriLangganan()}
                 </div>
                 <div className="row">

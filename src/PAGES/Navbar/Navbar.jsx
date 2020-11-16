@@ -9,6 +9,7 @@ import {Nav, Navbar, Image, NavDropdown} from 'react-bootstrap'
 import Logo from '../../IMG/Logo/TransparentLogo.png'
 import LogoScroll from '../../IMG/Logo/logohandwriting.png'
 import {FaShoppingBag} from 'react-icons/fa'
+import {IconContext} from "react-icons"
 
 class Navigation extends Component {
 
@@ -22,7 +23,6 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.props.hitungCart(this.props.user.id)
-        console.log(this.props.user.id)
         window.addEventListener('scroll', this.handleScroll)
     }
 
@@ -36,7 +36,6 @@ class Navigation extends Component {
         Axios.get(urlApi + 'user/userDashboard/' + this.props.user.email)
             .then((res) => {
                 this.setState({encryptedEmail: res.data})
-                console.log(this.state.encryptedEmail)
             })
             .catch((err) => {
                 console.log(err)
@@ -112,7 +111,26 @@ class Navigation extends Component {
                                             <NavDropdown.Divider/>
                                             <NavDropdown.Item eventKey="8" onClick={this.props.userLogout}>LOGOUT</NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link as={Link} eventKey="9" to="/Cart" className="link-nav"><FaShoppingBag/>&nbsp;{this.props.jumlahCart}</Nav.Link>
+                                    {
+                                        this.props.jumlahCart === 0 
+                                        ?
+                                        <Nav.Link as={Link} eventKey="9" to="/Cart" className="link-nav">
+                                            <span className="fa-stack">
+                                                <IconContext.Provider value={{ color: "secondary", size: '1.65em' }}>
+                                                    <FaShoppingBag/>
+                                                </IconContext.Provider>
+                                            </span>
+                                        </Nav.Link>
+                                        :
+                                        <Nav.Link as={Link} eventKey="9" to="/Cart" className="link-nav">
+                                            <span className="fa-stack" data-count={this.props.jumlahCart}>
+                                                <IconContext.Provider value={{ color: "secondary", size: '1.65em' }}>
+                                                    <FaShoppingBag/>
+                                                </IconContext.Provider>
+                                            </span>
+                                        </Nav.Link>
+                                    }
+                                    {/* <Nav.Link as={Link} eventKey="9" to="/Cart" className="link-nav"><FaShoppingBag/>&nbsp;{this.props.jumlahCart}</Nav.Link> */}
                                 </>
                                 :
                                 <>

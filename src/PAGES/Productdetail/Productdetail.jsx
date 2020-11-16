@@ -22,7 +22,8 @@ class Productdetail extends Component {
         tanggalHariIni: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
         inputTanggalMulai: '',
         inputDurasi: 0,
-        addToChartButton: true
+        addToChartButton: true,
+        wishlistClicked: false
     }
 
     componentDidMount = () => {
@@ -105,13 +106,14 @@ class Productdetail extends Component {
         Axios.post(urlApi + 'wishlist/getWishListByIdUserPaket/', obj)
         .then(res => {
             if(res.data.length > 0){
-                this.setState({wishlist: true})
+                this.setState({wishlist: true, wishlistClicked: false})
             }
         })
         .catch(err => console.log(err))
     }
 
     toggleWishlist = () => {
+            this.setState({wishlistClicked: true})
             var obj = {
                 idPaket: this.props.match.params.id,
                 idUser: this.props.user.id
@@ -122,13 +124,13 @@ class Productdetail extends Component {
                 if(this.state.wishlist){
                     Axios.delete(urlApi + 'wishlist/deleteWishlistById/' + res.data[0].id)
                     .then(res => {
-                        this.setState({wishlist: false})
+                        this.setState({wishlist: false, wishlistClicked: false})
                     })
                     .catch(err => console.log(err))
                 }else{
                     Axios.post(urlApi + 'wishlist/addToWishlist/', obj)
                     .then(res => {
-                        this.setState({wishlist: true})
+                        this.setState({wishlist: true, wishlistClicked: false})
                     })
                     .catch(err => console.log(err))
                 }
@@ -240,24 +242,33 @@ class Productdetail extends Component {
                                 this.state.dataPaketLangganan !== ''
                                 ?
                                 <>
-
-                                    <h1 className="package-name package-name-mobile">
-                                    {this.state.dataPaketLangganan.namaPaket}&nbsp;
-                                    {   
-                                        this.state.wishlist 
-                                        ? 
-                                            <IoMdHeart className="heart-wishlist" onClick={this.toggleWishlist}/>
-                                        :
-                                        <>
-                                            {
-                                                this.props.user.id === 0
-                                                ?
-                                                <Link to='/Login' className="heart-wishlist-notlogin"><IoMdHeartEmpty className="heart-wishlist"/></Link>
-                                                :
-                                                <IoMdHeartEmpty onClick={this.toggleWishlist} className="heart-wishlist"/>
-                                            }
-                                        </>
-                                    }
+                                    <h1 className="package-name package-name-mobile">{this.state.dataPaketLangganan.namaPaket}&nbsp;
+                                    <span>
+                                        {
+                                            this.props.user.id === 0
+                                            ?
+                                            <Link to='/Login' className="heart-wishlist-notlogin"><IoMdHeartEmpty className="heart-wishlist"/></Link>
+                                            :
+                                            <>
+                                                {
+                                                    this.state.wishlistClicked
+                                                    ?
+                                                    <Spinner animation="grow" variant="secondary"/>
+                                                    :
+                                                    <>
+                                                        {
+                                                            this.state.wishlist
+                                                            ?
+                                                            <IoMdHeart className="heart-wishlist" onClick={this.toggleWishlist}/>
+                                                            :
+                                                            <IoMdHeartEmpty onClick={this.toggleWishlist} className="heart-wishlist"/>
+                                                        }
+                                                    </>
+                                                    
+                                                }
+                                            </>
+                                        }
+                                    </span>
                                     </h1>
                                     {
                                         this.state.dataPaketLangganan.discount === 0 || this.state.dataJadwalPaketLangganan === ''

@@ -6,7 +6,7 @@ import {urlApi} from '../../HELPERS/database'
 import swal from 'sweetalert'
 import moment from 'moment'
 import {hitungCart} from '../../REDUX/Action'
-import {Table, Button} from 'react-bootstrap'
+import {Table, Button, Spinner} from 'react-bootstrap'
 import './Cart.css' 
 import ModalCheckout from './ModalCheckout'
 
@@ -14,7 +14,8 @@ class Cart extends Component {
 
     state = {
         cart: [],
-        deleteButtonClicked: false
+        deleteButtonClicked: false,
+        data: "unloaded"
     }
 
     componentDidMount() {
@@ -30,7 +31,7 @@ class Cart extends Component {
     getDataApi = (userId) => {
         Axios.get(urlApi + `cart/getCartUser/` + userId)
         .then((res)=>{
-            this.setState({cart: res.data})
+            this.setState({cart: res.data, data: "loaded"})
         })
         .catch((err) => {
             console.log(err)
@@ -198,43 +199,53 @@ class Cart extends Component {
                     </div>
                 </div>
                 {
-                    this.state.cart.length === 0
+                    this.state.data === "unloaded"
                     ?
-                    <h1 className="h1 text-center my-5">YOUR CART IS EMPTY</h1>
+                    <center>
+                        <Spinner animation="border" className="my-5" variant="secondary"/>
+                    </center>                   
                     :
-                    <div className="container-fluid">
-                        <div className="card my-5">
-                            <div className="card-body">
-                                <Table striped bordered hover responsive>
-                                    <thead className="text-center font-weight-bold bg-success text-white">
-                                        <tr>
-                                            <th>PACKAGE</th>
-                                            <th>PRICE</th>
-                                            <th>BOX</th>
-                                            <th>START</th>
-                                            <th>END</th>
-                                            <th>DURATION</th>
-                                            <th>TOTAL</th>
-                                            <th>DELETE</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.renderCart()}
-                                    </tbody>
-                                </Table>
+                    <>
+                    {
+                        this.state.cart.length === 0
+                        ?
+                        <h1 className="h1 text-center my-5">YOUR CART IS EMPTY</h1>
+                        :
+                        <div className="container-fluid">
+                            <div className="card my-5">
+                                <div className="card-body">
+                                    <Table striped bordered hover responsive>
+                                        <thead className="text-center font-weight-bold bg-success text-white">
+                                            <tr>
+                                                <th>PACKAGE</th>
+                                                <th>PRICE</th>
+                                                <th>BOX</th>
+                                                <th>START</th>
+                                                <th>END</th>
+                                                <th>DURATION</th>
+                                                <th>TOTAL</th>
+                                                <th>DELETE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderCart()}
+                                        </tbody>
+                                    </Table>
+                                </div>
+                            </div>
+                            <div className="row m-2">
+                                <div className="col-12 text-center">
+                                    <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
+                                    <h3 className="font-weight-bold text-danger h3 mb-3">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.totalBelanjaan())}</h3>
+                                </div>
                             </div>
                         </div>
-                        <div className="row m-2">
-                            <div className="col-12 text-center">
-                                <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
-                                <h3 className="font-weight-bold text-danger h3 mb-3">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.totalBelanjaan())}</h3>
-                            </div>
-                        </div>
-                    </div>
-                }
-                <center className="mb-5">
-                <ModalCheckout totalBelanjaan={this.totalBelanjaan()}/>
-                </center>
+                    }
+                    <center className="mb-5">
+                    <ModalCheckout totalBelanjaan={this.totalBelanjaan()}/>
+                    </center>
+                    </>
+                }      
             </section>
         );
     }

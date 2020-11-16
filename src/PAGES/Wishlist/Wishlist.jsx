@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import swal from 'sweetalert'
 import './Wishlist.css'
-import {Table} from 'react-bootstrap'
+import {Table, Spinner} from 'react-bootstrap'
 
 class Wishlist extends Component {
 
@@ -14,7 +14,8 @@ class Wishlist extends Component {
         data: [],
         showDetails: false,
         detailIdx: null,
-        buttonDeleteClicked: false
+        buttonDeleteClicked: false,
+        getData: "unloaded"
     }
 
     componentDidMount () {
@@ -24,7 +25,7 @@ class Wishlist extends Component {
     getDataWishlist = () => {
         Axios.get(urlApi + 'wishlist/getWishlistByIdUser/' + this.props.user.id)
         .then(res => {
-            this.setState({data : res.data})
+            this.setState({data : res.data, getData:"loaded"})
         })
         .catch(err => {
             console.log(err)
@@ -89,31 +90,41 @@ class Wishlist extends Component {
                     </div>
                 </div>
                 {
-                    this.state.data.length === 0
+                    this.state.getData === "unloaded"
                     ?
-                    <h1 className="text-center my-5">YOUR WISHLIST IS EMPTY</h1>
+                    <center>
+                        <Spinner animation="border" className="my-5" variant="secondary"/>
+                    </center>
                     :
-                    <div className="container mt-5">
-                            <div className="card mb-5">
-                                <div className="card-body">
-                                    <Table striped bordered hover responsive>
-                                        <thead className="text-center font-weight-bold bg-success text-white">
-                                            <tr>
-                                                <th>No. </th>
-                                                <th>ITEM NAME</th>
-                                                <th>IMAGE</th>
-                                                <th>PRICE</th>
-                                                <th>DISCOUNT</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                {this.renderWishlist()}
-                                        </tbody>
-                                    </Table>
-                                </div>
+                    <>
+                        {
+                            this.state.data.length === 0
+                            ?
+                            <h1 className="text-center my-5">YOUR WISHLIST IS EMPTY</h1>
+                            :
+                            <div className="container mt-5">
+                                    <div className="card mb-5">
+                                        <div className="card-body">
+                                            <Table striped bordered hover responsive>
+                                                <thead className="text-center font-weight-bold bg-success text-white">
+                                                    <tr>
+                                                        <th>No. </th>
+                                                        <th>ITEM NAME</th>
+                                                        <th>IMAGE</th>
+                                                        <th>PRICE</th>
+                                                        <th>DISCOUNT</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {this.renderWishlist()}
+                                                </tbody>
+                                            </Table>
+                                        </div>
+                                    </div>
                             </div>
-                    </div>
+                        }
+                    </>
                 }
             </section>
         );

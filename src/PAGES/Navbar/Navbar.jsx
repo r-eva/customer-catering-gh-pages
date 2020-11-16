@@ -14,6 +14,7 @@ class Navigation extends Component {
 
     state = {
         cart: this.props.jumlahCart,
+        userIdLogin: this.props.user.id,
         isOpenDropdown: false,
         bgNavbar: "",
         height: "100px",
@@ -21,11 +22,12 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.props.hitungCart(this.props.user.id)
+        console.log(this.props.user.id)
         window.addEventListener('scroll', this.handleScroll)
     }
 
     componentDidUpdate(){
-        if (this.state.cart !== this.props.jumlahCart) {
+        if (this.state.cart !== this.props.jumlahCart || this.state.userIdLogin !== this.props.user.id) {
             this.props.hitungCart(this.props.user.id)
         }
     }

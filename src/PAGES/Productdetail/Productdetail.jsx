@@ -331,7 +331,7 @@ class Productdetail extends Component {
                                 </div>
                                  <div className="col-4 pl-0 pr-4">
                                     <select ref='inputDurasi' className="browser-default custom-select" onClick={this.getValueDurasi}>
-                                        <option>Choose</option>
+                                        <option value="0">Choose</option>
                                         <option value="2 hari">2 day</option>
                                         <option value="5 hari">5 day</option>
                                         <option value="10 hari">10 day</option>
@@ -349,12 +349,12 @@ class Productdetail extends Component {
                                     <div className="row">
                                         <div className="col-9 text-right">
                                             {
-                                                this.state.inputDurasi === 0
+                                                this.state.inputDurasi === 0 || this.state.inputTanggalMulai === ""
                                                 ?
                                                 <h1 className="font-counting h6">&nbsp;</h1>                                       
                                                 :
                                                 <h1 className="font-counting h6">
-                                                    {this.state.jumlahBox} box * {this.state.inputDurasi} days * &euro; {this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100))}
+                                                    {this.state.jumlahBox} box * {this.state.inputDurasi} days * {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}
                                                 </h1>                                             
                                             }
                                         </div>
@@ -365,11 +365,11 @@ class Productdetail extends Component {
                                         </div>
                                         <div className="col-5 text-right">
                                             {
-                                                this.refs.inputDurasi === 0
+                                                this.state.inputDurasi === 0 || this.state.inputTanggalMulai === ""
                                                 ?
                                                 <h1 className="text-warning font-weight-bold font-bill h5">&euro; 0</h1>                                       
                                                 :
-                                                <h1 className="text-warning font-weight-bold font-bill h5">&euro; {this.state.jumlahBox * this.state.inputDurasi * (this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>                                             
+                                                <h1 className="text-warning font-weight-bold font-bill h5">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.jumlahBox * this.state.inputDurasi * (this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100))).toFixed(2))}</h1>                                             
                                             }
                                         </div>
                                     </div>

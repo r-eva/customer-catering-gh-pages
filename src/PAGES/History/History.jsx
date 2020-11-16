@@ -47,28 +47,17 @@ class History extends Component {
 
     renderHistoryDetail = () => {
         var jsx = this.state.historyDetail.map((val, idx) => {
+            var newPrice = (val.harga - (val.harga * val.discount/100)).toFixed(2)
             return (
                     <tr key = {val.id}>
                         <td>{idx + 1}</td>
                         <td>{val.namaPaket}</td>
-                        <td>{val.harga}</td>
-                        <td>
-                            {
-                                val.discount === 0
-                                ?
-                                <>
-                                    <p>Normal Price</p>
-                                </>
-                                :
-                                <p>{val.discount}%</p>
-
-                            }
-                        </td>
+                        <td>{newPrice}</td>
                         <td>{val.JumlahBox}</td>
                         <td>{val.TanggalMulai.slice(0, 10)}</td>
                         <td>{val.TanggalBerakhir.slice(0, 10)}</td>
                         <td>{val.Durasi}</td>
-                        <td>{val.Durasi * val.JumlahBox * (val.harga - (val.harga * val.discount/100))}</td>
+                        <td>{(newPrice * val.Durasi * val.JumlahBox).toFixed(2)}</td>
                         
                     </tr>
                     )
@@ -214,7 +203,6 @@ class History extends Component {
                             <th>No.</th>
                             <th>Package </th>
                             <th>Price</th>
-                            <th>Discount</th>
                             <th>Qty</th>
                             <th>Start Date</th>
                             <th>End Date</th>

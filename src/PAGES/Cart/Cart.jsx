@@ -127,7 +127,7 @@ class Cart extends Component {
     totalBelanjaan = () => {
         var hargaTotal = 0
         this.state.cart.map(val => {
-            return hargaTotal += val.Durasi * val.JumlahBox * (val.harga - (val.harga * (val.discount/100)))
+            return hargaTotal += val.Durasi * val.JumlahBox * (val.harga - (val.harga * (val.discount/100))).toFixed(2)
         })
         return hargaTotal
     }
@@ -137,14 +137,7 @@ class Cart extends Component {
             return (
                 <tr className="text-center" key={val.id}>
                     <td>{val.namaPaket}</td>
-                    <td>{val.harga}</td>
-                    {
-                        val.discount === 0
-                        ?
-                        <td>Normal Price</td>
-                        :
-                        <td>{val.discount}%</td>
-                    }              
+                    <td>{(val.harga - (val.harga * (val.discount/100))).toFixed(2)}</td>           
                     <td>
                         <div className="d-flex flex-row justify-content-center">
                             <input type="button" className="btn btn-secondary" value='-' onClick={()=> this.onBtnEditQty('min', idx)}/>
@@ -163,7 +156,7 @@ class Cart extends Component {
                             {val.Durasi === 20 ? null : <option value="20">20 days</option>}
                         </select>
                     </td>
-                    <td>{val.Durasi * val.JumlahBox * (val.harga - (val.harga * (val.discount/100))) }</td>
+                    <td>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.Durasi * val.JumlahBox * (val.harga - (val.harga * (val.discount/100))).toFixed(2))}</td>
                     <td>
                         {   this.state.deleteButtonClicked === false
                             ?
@@ -217,7 +210,6 @@ class Cart extends Component {
                                         <tr>
                                             <th>PACKAGE</th>
                                             <th>PRICE</th>
-                                            <th>DISCOUNT</th>
                                             <th>BOX</th>
                                             <th>START</th>
                                             <th>END</th>
@@ -235,7 +227,7 @@ class Cart extends Component {
                         <div className="row m-2">
                             <div className="col-12 text-center">
                                 <h3 className="font-weight-bold h4">TOTAL INVOICE:</h3>
-                                <h3 className="font-weight-bold text-danger h3 mb-3">&euro; {this.totalBelanjaan()}</h3>
+                                <h3 className="font-weight-bold text-danger h3 mb-3">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.totalBelanjaan())}</h3>
                             </div>
                         </div>
                     </div>

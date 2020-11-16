@@ -236,47 +236,56 @@ class Productdetail extends Component {
                             }
                         </div>
                         <div className="col-12 col-md-5 pt-2 pt-md-5 mb-4">
-                            <h1 className="package-name package-name-mobile">
-                            {this.state.dataPaketLangganan.namaPaket}&nbsp;
-                            {   
-                                this.state.wishlist 
-                                ? 
-                                    <IoMdHeart className="heart-wishlist" onClick={this.toggleWishlist}/>
-                                :
-                                <>
-                                    {
-                                        this.props.user.id === 0
-                                        ?
-                                        <Link to='/Login' className="heart-wishlist-notlogin"><IoMdHeartEmpty className="heart-wishlist"/></Link>
-                                        :
-                                        <IoMdHeartEmpty onClick={this.toggleWishlist} className="heart-wishlist"/>
-                                    }
-                                </>
-                            }
-                            </h1>
                             {
-                                this.state.dataPaketLangganan.discount === 0 || this.state.dataJadwalPaketLangganan === ''
+                                this.state.dataPaketLangganan !== ''
                                 ?
-                                <div className="normal-price">
-                                    <h6 className="normal-price-font">Normal Price</h6>
-                                </div>
-                                :
                                 <>
-                                    <div className="discount-price">
-                                        <h6 className="normal-price-font">
-                                        {this.state.dataPaketLangganan.discount}%
-                                        </h6>
+
+                                    <h1 className="package-name package-name-mobile">
+                                    {this.state.dataPaketLangganan.namaPaket}&nbsp;
+                                    {   
+                                        this.state.wishlist 
+                                        ? 
+                                            <IoMdHeart className="heart-wishlist" onClick={this.toggleWishlist}/>
+                                        :
+                                        <>
+                                            {
+                                                this.props.user.id === 0
+                                                ?
+                                                <Link to='/Login' className="heart-wishlist-notlogin"><IoMdHeartEmpty className="heart-wishlist"/></Link>
+                                                :
+                                                <IoMdHeartEmpty onClick={this.toggleWishlist} className="heart-wishlist"/>
+                                            }
+                                        </>
+                                    }
+                                    </h1>
+                                    {
+                                        this.state.dataPaketLangganan.discount === 0 || this.state.dataJadwalPaketLangganan === ''
+                                        ?
+                                        <div className="normal-price">
+                                            <h6 className="normal-price-font">Normal Price</h6>
+                                        </div>
+                                        :
+                                        <>
+                                            <div className="discount-price">
+                                                <h6 className="normal-price-font">
+                                                {this.state.dataPaketLangganan.discount}%
+                                                </h6>
+                                            </div>
+                                            <span className="price-tag-discount">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.dataPaketLangganan.harga)}
+                                            </span>
+                                        </>
+                                    }
+                                    <h1 className="final-price">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>
+                                    <div className='row mt-2 mt-md-4'>
+                                        <div className='col-12'>
+                                            <p className="product-description">{this.state.dataPaketLangganan.deskripsi}</p>
+                                        </div>
                                     </div>
-                                    <span className="price-tag-discount">&euro; {this.state.dataPaketLangganan.harga}
-                                    </span>
                                 </>
+                                :
+                                <Spinner className="mb-4" animation="border" variant="secondary"/>
                             }
-                            <h1 className="final-price">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.dataPaketLangganan.harga - (this.state.dataPaketLangganan.harga * (this.state.dataPaketLangganan.discount/100)))}</h1>
-                            <div className='row mt-2 mt-md-4'>
-                                <div className='col-12'>
-                                    <p className="product-description">{this.state.dataPaketLangganan.deskripsi}</p>
-                                </div>
-                            </div>
                             <h6 className="amount-box">Amount of Box Per day</h6>
                             <div className="row">
                                 <div className="col-5">

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tagline.css';
 import {Button} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 const Tagline = () => {
     return (
@@ -19,7 +20,7 @@ const Tagline = () => {
                         </p>
                     </div>
                     <div className="text-center pb-5 pb-md-2">
-                        <Button variant="danger">START SUBSCRIPTION</Button>
+                        <Link to="/Subscribe"><Button variant="danger">START SUBSCRIPTION</Button></Link>
                     </div>
                 </div>
             </div>

@@ -160,6 +160,7 @@ class History extends Component {
                     this.submitPembayaranSukses(this.state.belanjaDiproses.id)
                 }).catch(err => {
                     console.log(err.response)
+                    this.setState({uploadBuktiBayarClicked: false})
                     swal ('Eror', 'Failed to upload your payment receipt, please check format of your file!', 'error')
                 })
         }

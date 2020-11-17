@@ -58,8 +58,7 @@ class History extends Component {
                         <td>{val.TanggalMulai.slice(0, 10)}</td>
                         <td>{val.TanggalBerakhir.slice(0, 10)}</td>
                         <td>{val.Durasi}</td>
-                        <td>{(newPrice * val.Durasi * val.JumlahBox).toFixed(2)}</td>
-                        
+                        <td>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format((newPrice * val.Durasi * val.JumlahBox).toFixed(2))}</td>
                     </tr>
                     )
         })
@@ -83,7 +82,7 @@ class History extends Component {
             return (
                 <tr className="text-center" key={val.id}>
                     <td>{val.TanggalTransaksi}</td>
-                    <td>{val.TotalBelanja}</td>
+                    <td>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(val.TotalBelanja)}</td>
                     <td>{val.Status}</td>
                     <td>{val.BatasAkhirBayar}</td>
                     <td>
@@ -216,7 +215,7 @@ class History extends Component {
                         {this.renderHistoryDetail()}
                         <tr>
                             <td colSpan="6">TOTAL</td>
-                            <td colSpan="3">{this.state.historyDetail[0].TotalBelanja}</td>
+                            <td colSpan="3">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.historyDetail[0].TotalBelanja)}</td>
                         </tr>
                     </tbody>
                 </Table>

@@ -17,8 +17,6 @@ const Footer = () => {
                                 <a href="https://www.instagram.com/indtravel/?hl=en"><IconContext.Provider value={{ color: 'black', size: '30px' }}><AiFillInstagram/></IconContext.Provider></a>&nbsp;
                                 <a href="mailto:website@gmail.com?Subject=Hi%20Eva"><IconContext.Provider value={{ color: 'black', size: '30px' }}><AiFillMail/></IconContext.Provider></a>
                             </div>
-                            <div><p className="text-center text-secondary font-weight-bold">Copyright 2019 by Regina Eva</p></div>
-                            <div><p className="text-center text-secondary font-weight-bold">Copyright 2019 by Regina Eva</p></div>
                         </div>
                     </div>
                 </div>

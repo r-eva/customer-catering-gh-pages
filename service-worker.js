@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/customer-catering-gh-pages/precache-manifest.a5c72ba68a167c326932ced69dc6e68b.js"
+  "/customer-catering-gh-pages/precache-manifest.83a32c5cccae21082684dedcb1e9bb42.js"
 );
 
 self.addEventListener('message', (event) => {

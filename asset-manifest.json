@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/customer-catering-gh-pages/static/css/main.4f82f7ea.chunk.css",
-    "main.js": "/customer-catering-gh-pages/static/js/main.3adc0590.chunk.js",
-    "main.js.map": "/customer-catering-gh-pages/static/js/main.3adc0590.chunk.js.map",
+    "main.js": "/customer-catering-gh-pages/static/js/main.f5f2c094.chunk.js",
+    "main.js.map": "/customer-catering-gh-pages/static/js/main.f5f2c094.chunk.js.map",
     "runtime-main.js": "/customer-catering-gh-pages/static/js/runtime-main.750ed771.js",
     "runtime-main.js.map": "/customer-catering-gh-pages/static/js/runtime-main.750ed771.js.map",
     "static/css/2.de424728.chunk.css": "/customer-catering-gh-pages/static/css/2.de424728.chunk.css",
     "static/js/2.d4abc237.chunk.js": "/customer-catering-gh-pages/static/js/2.d4abc237.chunk.js",
     "static/js/2.d4abc237.chunk.js.map": "/customer-catering-gh-pages/static/js/2.d4abc237.chunk.js.map",
     "index.html": "/customer-catering-gh-pages/index.html",
-    "precache-manifest.8f6eed5a5ee56051011fc1a11cb571d1.js": "/customer-catering-gh-pages/precache-manifest.8f6eed5a5ee56051011fc1a11cb571d1.js",
+    "precache-manifest.83a32c5cccae21082684dedcb1e9bb42.js": "/customer-catering-gh-pages/precache-manifest.83a32c5cccae21082684dedcb1e9bb42.js",
     "service-worker.js": "/customer-catering-gh-pages/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/customer-catering-gh-pages/static/css/2.de424728.chunk.css.map",
     "static/css/main.4f82f7ea.chunk.css.map": "/customer-catering-gh-pages/static/css/main.4f82f7ea.chunk.css.map",
@@ -43,6 +43,6 @@
     "static/css/2.de424728.chunk.css",
     "static/js/2.d4abc237.chunk.js",
     "static/css/main.4f82f7ea.chunk.css",
-    "static/js/main.3adc0590.chunk.js"
+    "static/js/main.f5f2c094.chunk.js"
   ]
 }
